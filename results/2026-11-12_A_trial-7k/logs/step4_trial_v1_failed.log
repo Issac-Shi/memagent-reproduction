@@ -1,0 +1,47 @@
+[2026-11-12 02:07:28] ==== 4.1 确认 GPU ====
+name, memory.total [MiB], memory.used [MiB], driver_version
+NVIDIA GeForce RTX 4090, 24564 MiB, 1 MiB, 595.71.05
+True NVIDIA GeForce RTX 4090
+[2026-11-12 02:07:30] ==== 4.2 启动 A 组服务 ====
+[2026-11-12 02:07:30] 已启动 A 组服务 BytedTsinghua-SIA/RL-MemoryAgent-7B（PID 4723）
+[2026-11-12 02:08:30] vllm serve 进程已退出，没有就绪
+INFO 11-12 02:07:40 [config.py:1697] Chunked prefill is enabled with max_num_batched_tokens=2048.
+INFO 11-12 02:07:45 [__init__.py:239] Automatically detected platform cuda.
+INFO 11-12 02:07:47 [core.py:54] Initializing a V1 LLM engine (v0.8.2) with config: model='/root/autodl-tmp/models/RL-MemoryAgent-7B', speculative_config=None, tokenizer='/root/autodl-tmp/models/RL-MemoryAgent-7B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=None, served_model_name=BytedTsinghua-SIA/RL-MemoryAgent-7B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=True, chunked_prefill_enabled=True, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"level":3,"custom_ops":["none"],"splitting_ops":["vllm.unified_attention","vllm.unified_attention_with_output"],"use_inductor":true,"compile_sizes":[],"use_cudagraph":true,"cudagraph_num_of_warmups":1,"cudagraph_capture_sizes":[512,504,496,488,480,472,464,456,448,440,432,424,416,408,400,392,384,376,368,360,352,344,336,328,320,312,304,296,288,280,272,264,256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":512}
+WARNING 11-12 02:07:47 [utils.py:2321] Methods determine_num_available_blocks,device_config,get_cache_block_size_bytes,initialize_cache not implemented in <vllm.v1.worker.gpu_worker.Worker object at 0x7f3eab933440>
+INFO 11-12 02:07:48 [parallel_state.py:954] rank 0 in world size 1 is assigned as DP rank 0, PP rank 0, TP rank 0
+INFO 11-12 02:07:48 [cuda.py:220] Using Flash Attention backend on V1 engine.
+INFO 11-12 02:07:48 [gpu_model_runner.py:1174] Starting to load model /root/autodl-tmp/models/RL-MemoryAgent-7B...
+WARNING 11-12 02:07:48 [topk_topp_sampler.py:63] FlashInfer is not available. Falling back to the PyTorch-native implementation of top-p & top-k sampling. For the best performance, please install FlashInfer.
+Loading safetensors checkpoint shards:   0% Completed | 0/4 [00:00<?, ?it/s]
+Loading safetensors checkpoint shards:  25% Completed | 1/4 [00:00<00:00,  5.30it/s]
+Loading safetensors checkpoint shards:  50% Completed | 2/4 [00:00<00:00,  2.30it/s]
+Loading safetensors checkpoint shards:  75% Completed | 3/4 [00:01<00:00,  1.71it/s]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.51it/s]
+Loading safetensors checkpoint shards: 100% Completed | 4/4 [00:02<00:00,  1.71it/s]
+
+INFO 11-12 02:07:51 [loader.py:447] Loading weights took 2.43 seconds
+INFO 11-12 02:07:51 [gpu_model_runner.py:1186] Model loading took 14.2487 GB and 2.707272 seconds
+INFO 11-12 02:07:57 [backends.py:415] Using cache directory: /root/.cache/vllm/torch_compile_cache/a55d07dfce/rank_0_0 for vLLM's torch.compile
+INFO 11-12 02:07:57 [backends.py:425] Dynamo bytecode transform time: 5.86 s
+INFO 11-12 02:08:00 [backends.py:132] Cache the graph of shape None for later use
+INFO 11-12 02:08:20 [backends.py:144] Compiling a graph for general shape takes 22.42 s
+INFO 11-12 02:08:29 [monitor.py:33] torch.compile takes 28.29 s in total
+ERROR 11-12 02:08:29 [core.py:343] EngineCore hit an exception: Traceback (most recent call last):
+ERROR 11-12 02:08:29 [core.py:343]   File "/root/miniconda3/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 335, in run_engine_core
+ERROR 11-12 02:08:29 [core.py:343]     engine_core = EngineCoreProc(*args, **kwargs)
+ERROR 11-12 02:08:29 [core.py:343]                   ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 11-12 02:08:29 [core.py:343]   File "/root/miniconda3/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 290, in __init__
+ERROR 11-12 02:08:29 [core.py:343]     super().__init__(vllm_config, executor_class, log_stats)
+ERROR 11-12 02:08:29 [core.py:343]   File "/root/miniconda3/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 63, in __init__
+ERROR 11-12 02:08:29 [core.py:343]     num_gpu_blocks, num_cpu_blocks = self._initialize_kv_caches(
+ERROR 11-12 02:08:29 [core.py:343]                                      ^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ERROR 11-12 02:08:29 [core.py:343]   File "/root/miniconda3/lib/python3.12/site-packages/vllm/v1/engine/core.py", line 127, in _initialize_kv_caches
+ERROR 11-12 02:08:29 [core.py:343]     get_kv_cache_config(vllm_config, kv_cache_spec_one_worker,
+ERROR 11-12 02:08:29 [core.py:343]   File "/root/miniconda3/lib/python3.12/site-packages/vllm/v1/core/kv_cache_utils.py", line 604, in get_kv_cache_config
+ERROR 11-12 02:08:29 [core.py:343]     check_enough_kv_cache_memory(vllm_config, kv_cache_spec, available_memory)
+ERROR 11-12 02:08:29 [core.py:343]   File "/root/miniconda3/lib/python3.12/site-packages/vllm/v1/core/kv_cache_utils.py", line 478, in check_enough_kv_cache_memory
+ERROR 11-12 02:08:29 [core.py:343]     raise ValueError(
+ERROR 11-12 02:08:29 [core.py:343] ValueError: To serve at least one request with the models's max seq len (32768), (1.75 GB KV cache is needed, which is larger than the available KV cache memory (0.85 GB). Try increasing `gpu_memory_utilization` or decreasing `max_model_len` when initializing the engine.
+ERROR 11-12 02:08:29 [core.py:343] 
+CRITICAL 11-12 02:08:29 [core_client.py:269] Got fatal signal from worker processes, shutting down. See stack trace above for root cause issue.

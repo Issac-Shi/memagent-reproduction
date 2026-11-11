@@ -1,0 +1,13 @@
+[2026-11-12 02:20:17] 服务就绪：BytedTsinghua-SIA/RL-MemoryAgent-7B（等了 0s）
+em: 59.38
+sub_em: 78.91
+Total: 128
+
+real	5m44.751s
+user	0m15.852s
+sys	0m2.615s
+[2026-11-12 02:26:02] 结束 Aboxed_50：128 行
+method  docs  n  sub_em  strict  no_answer
+MemoryAgent-7B-5k-1k-infty 50 128 78.91 72.66 0
+MemoryAgent-7B-boxed 50 128 78.91 67.97 0
+[2026-11-12 02:26:02] step4 boxed done

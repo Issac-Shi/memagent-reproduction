@@ -1,0 +1,11 @@
+method  docs  n  sub_em  strict  no_answer
+MemoryAgent-7B-5k-1k-infty 100 128 79.69 71.09 0
+MemoryAgent-7B-5k-1k-infty 200 128 75.78 68.75 0
+MemoryAgent-7B-5k-1k-infty 400 128 78.91 70.31 0
+Qwen-7B-120k+10k 50 128 53.12 47.66 1
+Qwen-7B-120k+10k 100 128 54.69 46.09 3
+Qwen-7B-120k+10k 200 128 48.44 41.41 1
+Qwen-7B-5k-1k-infty 50 128 57.81 51.56 0
+Qwen-7B-5k-1k-infty 100 128 53.91 47.66 2
+Qwen-7B-5k-1k-infty 200 128 53.12 48.44 0
+Qwen-7B-5k-1k-infty 400 128 50.0 45.31 0

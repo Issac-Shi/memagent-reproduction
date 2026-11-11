@@ -1,0 +1,238 @@
+{'DATAROOT': '/root/autodl-tmp/hotpotqa',
+ 'RECURRENT_CHUNK_SIZE': 5000,
+ 'RECURRENT_MAX_CONTEXT_LEN': 100000000000,
+ 'RECURRENT_MAX_NEW': 1024}
+Namespace(length=200, save_dir='results/ruler_hqa_200', save_file='Qwen-7B-5k-1k-infty', model='Qwen/Qwen2.5-7B-Instruct', tokenizer='/root/autodl-tmp/models/Qwen2.5-7B-Instruct', n_proc=256, api='recurrent', sampling=1, force=False)
+original data len 128
+sampling data len 128
+0
+127
+  0%|          | 0/128 [00:00<?, ?it/s]user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+No previous memory
+</memory>
+
+<section>
+Document 1:
+Lovelyville
+Lovelyville is the third album by Thinking Fellers Union Local 282, released December 12, 1991 on LP and CD through Matador Records. The CD contains bonus tracks entitled "The Crowded Diaper."
+
+Document 2:
+Science Supercourse
+Science Supercourse is a free online accessible educational resource currently encompassing more than 165,000 downloadable PowerPoint lectures covering four main areas of science; Public Health, Computer Engine
+
+...(truncated)
+
+xt few seasons. Despite a sound defence, Barber did not secure a regular first team place until 1932. He scored a thousand runs for the first time that season, a feat he was to achieve eight times, while he scored over 2,000 runs in 1935. Until the Second World War broke out, Barber continued as a regular member of the Yorkshire side. After the war, he played one more full season before retiring in 1947. His career continued in club cricket and he went on to coach local sides before his death in 1968.
+
+Document 37:
+The Little Black Bag
+"The Little Black Bag" is a science fiction short story by American Cyril M. Kornbluth, first published in the July 1950 edition of "Astounding Science Fiction". It is a predecessor of sorts to the story "The Marching Morons". It won the 2001 Retroactive Hugo Award for Best Novelette (of 1951) and was also recognized as the 13th best all-time short science fiction story in a 1971 "Analog Science Fact & Fiction" poll,
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." Based on the information provided, there is no mention of Shannon Elizabeth holding any government position. Therefore, we can infer that the question might be asking about a different context or position, but based on the given documents, we cannot determine what specific government position she held if any.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." Based on the information provided, there is no mention of Shannon Elizabeth holding any government position. Therefore, we can infer that the question might be asking about a different context or position, but based on the given documents, we cannot determine what specific government position she held if any.
+</memory>
+
+<section>
+ tied wit
+
+...(truncated)
+
+heir troops.
+
+Document 71:
+Addison Baker
+Lieutenant Colonel Addison Earl Baker (January 1, 1907 – August 1, 1943) was commander of the 93rd Bombardment Group (Heavy) in the U.S. Army Air Forces who led the group on the low-altitude Allied bombing mission of oil refineries at Ploieşti, Romania, Operation Tidal Wave. For his actions during World War II he received the United States of America's highest military decoration, the Medal of Honor.
+
+Document 72:
+The Stepford Children
+The Stepford Children is a 1987 American made-for-television science fiction-thriller film inspired by the Ira Levin novel "The Stepford Wives". It was directed by Alan J. Levi with a screenplay by Bill Bleich and starring Barbara Eden, Don Murray, Tammy Lauren, Randall Batinkoff and Pat Corley. It is the second in a series of sequels inspired by the 1972 novel and the original 1975 film "The Stepford Wives".
+
+Document 73:
+W. K. Stratton
+W.K. Stratton (William Kip Stratton) is
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." Based on the information provided, there is still no mention of Shannon Elizabeth holding any government position. Therefore, we can infer that the question might be asking about a different context or position, but based on the given documents, we cannot determine what specific government position she held if any. No new information has been added regarding Shannon Elizabeth's government position.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." Based on the information provided, there is still no mention of Shannon Elizabeth holding any government position. Therefore, we can infer that the question might be asking about a different context or position, but based on the given documents, we cannot determine what specific government position she held if any. No new information has b
+
+...(truncated)
+
+nstitutional Affairs from the First Secretary of State, a position within the government held by the Deputy Prime Minister.
+
+Document 110:
+Kate Gordon (energy analyst)
+Kate Gordon is an American lawyer, urban planner, non-profit advisor, and leader in the “green jobs” and climate risk movement. She is currently an independent consultant and Senior Advisor at the Paulson Institute, where she provides strategic support on issues related to climate change and sustainable economic growth. She is also a nonresident Fellow at the Center on Global Energy Policy at Columbia University and a regular contributor to the Wall Street Journal as one of the paper’s “Energy Experts.” She currently serves on the non-profit boards of Vote Solar, Center for Carbon Removal, and the American Jobs Project and writes a regular newsletter on clean energy and climate called "Kate's Cliffnotes"
+
+Document 111:
+Thomas Kyd
+Thomas Kyd (baptised 6 November 1558; buried 15 August
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." Based on the additional information provided, we learn that Charles Craft, an English-born American film and television editor, worked on the TV series "Meet Corliss Archer" (1954), among others. However, this information does not provide details about Shannon Elizabeth holding any government position. The document does not contain any information directly linking Shannon Elizabeth to a government position. Therefore, we still cannot determine what specific government position she held if any, based on the given documents.
+
+No new relevant information regarding Shannon Elizabeth's government position has been added.
+user:
+  1%|          | 1/128 [17:24<36:49:59, 1044.09s/it]You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." Based on the additional information provided, we learn that Charles Craft, an English-born American film and television editor, worked on the TV series "Meet Corliss Archer" (1954), among others. However, this information does not provide details about Shannon Elizabeth holding any government position. The document does not contain any inf
+
+...(truncated)
+
+ witness an Earthrise; escape the gravity of another celestial body (Earth's moon); and re-enter the gravitational well of Earth. The 1968 mission, the third flight of the Saturn V rocket and that rocket's first crewed launch, was also the first human spaceflight launch from the Kennedy Space Center, Florida, located adjacent to Cape Canaveral Air Force Station.
+
+Document 141:
+Race Wars (The Fast and the Furious)
+Race Wars is a drag racing event in the movie "The Fast and the Furious", which describes the underground illegal racing scene in Los Angeles, California, that character Dominic Toretto (Vin Diesel) and his team invent. Race Wars is not mentioned again until they reference it in the seventh installment of the "Fast and Furious" franchise, "Furious 7". The event consists of drag races where racers compete for large amounts of cash or pink slips, while beautiful women dance around the cars and throughout the event. There is a real life event
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." The provided section does not contain any information about Shannon Elizabeth holding any government position. No new relevant information regarding Shannon Elizabeth's government position has been added. Therefore, the answer to the problem remains unchanged: there is no information available in the provided text to determine what specific government position she held if any.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." The provided section does not contain any information about Shannon Elizabeth holding any government position. No new relevant information regarding Shannon Elizabeth's government position has been added. Therefore, the answer to the problem remains unchanged: there is no information available in the provided text to determine what specifi
+
+...(truncated)
+
+ three regiments known as "1st Arkansas" during the war. The second unit with the designation of "1st Arkansas" was the 1st Infantry, Arkansas State Troops, which was mustered into Confederate service at Pitman's Ferry, Arkansas, on 23 July 1861, under the command of Colonel Patrick Cleburne; this unit was eventually redesignated as the 15th Arkansas Volunteer Infantry. The third unit bearing the title "1st Arkansas" was the 1st Arkansas Volunteer Infantry, which served with the Union Army.
+
+Document 173:
+Robert J. Dole Institute of Politics
+The Robert J. Dole Institute of Politics, often shortened to the Dole Institute, is a nonpartisan political institution housed at the University of Kansas founded by the former U.S. Senator from Kansas and 1996 Republican presidential candidate Bob Dole. Opened on July 22, 2003 - Dole's 80th birthday - the institute's $11 million, 28000 sqft facility houses Dole's papers and hosts frequent political events. The
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." The provided section does not contain any information about Shannon Elizabeth holding any government position. No new relevant information regarding Shannon Elizabeth's government position has been added. Therefore, the answer to the problem remains unchanged: there is no information available in the provided text to determine what specific government position she held if any. 
+
+Additionally, Emilia Sykes is the Representative for the 34th district of the Ohio House of Representatives, but this information is unrelated to the problem about Shannon Elizabeth.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." The provided section does not contain any information about Shannon Elizabeth holding any government position. No new relevant information regarding Shannon Elizabeth's government position has been added. Therefore, the answer to the problem remains unchanged: there is no information available in the provided text to determine what specifi
+
+...(truncated)
+
+ceway hosted the first ever March Meet in 1959 and it helped establish the fledgling National Hot Rod Association's (NHRA) legitimacy.
+
+Document 199:
+United States midterm election
+Midterm elections in the United States refer to general elections in the United States that are held two years after the quadrennial (four-year) elections for the President of the United States (i.e. near the midpoint of the four-year presidential term). Federal offices that are up for election during the midterms are members of the United States Congress, including all 435 seats in the United States House of Representatives, and the full terms for 33 or 34 of the 100 seats in the United States Senate.
+
+Document 200:
+Kwasy, Masovian Voivodeship
+Kwasy is a village in the administrative district of Gmina Zbuczyn, within Siedlce County, Masovian Voivodeship, in east-central Poland. It lies approximately 8 km east of Zbuczyn, 21 km east of Siedlce, and 107 km east of Warsaw.
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." The section does not provide information about Shannon Elizabeth holding any government position. Therefore, there is still no information available in the provided text to determine what specific government position she held if any. 
+
+Additionally, Emilia Sykes is the Representative for the 34th district of the Ohio House of Representatives, but this information is unrelated to the problem about Shannon Elizabeth.
+
+The new information confirms that Shannon Elizabeth portrayed Corliss Archer in the film "Kiss and Tell" but does not provide any details about her holding a government position.
+user:
+  2%|▏         | 2/128 [17:36<15:18:23, 437.33s/it]   2%|▏         | 3/128 [17:38<8:17:15, 238.69s/it]   3%|▎         | 4/128 [17:39<4:58:37, 144.50s/it]  5%|▍         | 6/128 [17:39<2:18:17, 68.01s/it]   5%|▌         | 7/128 [17:39<1:39:37, 49.40s/it]  6%|▋         | 8/128 [17:40<1:11:08, 35.57s/it]  7%|▋         | 9/128 [17:41<51:16, 25.86s/it]    8%|▊         | 10/128 [17:44<37:46, 19.21s/it]  9%|▉         | 12/128 [17:45<20:22, 10.54s/it] 11%|█         | 14/128 [17:45<12:13,  6.43s/it] 13%|█▎        | 17/128 [17:45<06:29,  3.51s/it] 15%|█▍        | 19/128 [17:45<04:30,  2.49s/it] 16%|█▋        | 21/128 [17:46<03:16,  1.84s/it] 17%|█▋        | 22/128 [17:50<03:53,  2.21s/it] 18%|█▊        | 23/128 [17:50<03:06,  1.78s/it] 20%|█▉        | 25/128 [17:50<01:58,  1.15s/it] 22%|██▏       | 28/128 [17:50<01:07,  1.49it/s] 23%|██▎       | 30/128 [17:51<00:55,  1.77it/s] 25%|██▌       | 32/128 [17:51<00:39,  2.43it/s] 27%|██▋       | 34/128 [17:51<00:31,  3.00it/s] 31%|███▏      | 40/128 [17:51<00:14,  5.90it/s] 34%|███▍      | 44/128 [17:52<00:10,  8.10it/s] 36%|███▌      | 46/128 [17:52<00:09,  8.60it/s] 38%|███▊      | 49/128 [17:52<00:08,  9.60it/s] 41%|████      | 52/128 [17:52<00:06, 12.05it/s] 44%|████▍     | 56/128 [17:52<00:05, 12.89it/s] 45%|████▌     | 58/128 [17:52<00:05, 13.73it/s] 47%|████▋     | 60/128 [17:53<00:04, 14.42it/s] 48%|████▊     | 62/128 [17:53<00:05, 11.60it/s] 53%|█████▎    | 68/128 [17:53<00:03, 18.83it/s] 55%|█████▌    | 71/128 [17:53<00:03, 15.62it/s] 58%|█████▊    | 74/128 [17:53<00:03, 17.57it/s] 60%|██████    | 77/128 [17:53<00:02, 17.42it/s] 64%|██████▍   | 82/128 [17:54<00:02, 20.28it/s] 66%|██████▋   | 85/128 [17:54<00:02, 20.62it/s] 69%|██████▉   | 88/128 [17:54<00:03, 12.74it/s] 71%|███████   | 91/128 [17:54<00:02, 14.70it/s] 73%|███████▎  | 93/128 [17:55<00:02, 13.76it/s] 75%|███████▌  | 96/128 [17:55<00:03,  8.77it/s] 77%|███████▋  | 98/128 [17:55<00:03,  8.34it/s] 80%|███████▉  | 102/128 [17:56<00:02, 11.06it/s] 81%|████████▏ | 104/128 [17:56<00:02, 12.00it/s] 83%|████████▎ | 106/128 [17:56<00:01, 13.15it/s] 84%|████████▍ | 108/128 [17:56<00:01, 12.23it/s] 86%|████████▌ | 110/128 [17:57<00:02,  7.77it/s] 88%|████████▊ | 112/128 [17:57<00:02,  5.76it/s] 88%|████████▊ | 113/128 [17:57<00:02,  5.71it/s] 89%|████████▉ | 114/128 [17:58<00:03,  4.54it/s] 90%|████████▉ | 115/128 [17:58<00:03,  4.13it/s] 91%|█████████ | 116/128 [18:00<00:07,  1.60it/s] 91%|█████████▏| 117/128 [18:00<00:05,  1.84it/s] 93%|█████████▎| 119/128 [18:03<00:08,  1.11it/s] 94%|█████████▍| 120/128 [18:04<00:06,  1.16it/s] 95%|█████████▍| 121/128 [18:04<00:05,  1.36it/s] 96%|█████████▌| 123/128 [18:05<00:02,  1.72it/s] 97%|█████████▋| 124/128 [18:05<00:01,  2.06it/s] 98%|█████████▊| 125/128 [18:06<00:02,  1.48it/s] 98%|█████████▊| 126/128 [18:06<00:01,  1.85it/s] 99%|█████████▉| 127/128 [18:07<00:00,  1.60it/s]100%|██████████| 128/128 [18:08<00:00,  1.47it/s]100%|██████████| 128/128 [18:08<00:00,  8.50s/it]
+You are presented with a problem and a previous memory. Please answer the problem based on the previous memory and format your response as follows "Therefore, the answer is (insert answer here)".
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+Shannon Elizabeth, known professionally as Shannon Elizabeth, is an American actress who portrayed Corliss Archer in the film "Kiss and Tell." The section does not provide information about Shannon Elizabeth holding any government position. Therefore, there is still no information available in the provided text to determine what specific government position she held if any. 
+
+Additionally, Emilia Sykes is the Representative for the 34th district of the Ohio House of Representatives, but this information is unrelated to the problem about Shannon Elizabeth.
+
+The new information confirms that Shannon Elizabeth portrayed Corliss Archer in the film "Kiss and Tell" but does not provide any details about her holding a government position.
+</memory>
+
+Your answer:
+
+assistant:
+Therefore, the answer is that the information provided does not indicate that Shannon Elizabeth held any government position.
+Time taken: 1088.6393294334412 seconds
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 4096.00it/s]
+Time taken: 0.0011303424835205078 seconds
+========================================New Item Start========================================
+Therefore, the answer is that the information provided does not indicate that Shannon Elizabeth held any government position.
+--------------------------------------------------------------------------------
+that the information provided does not indicate that Shannon Elizabeth held any government position
+--------------------------------------------------------------------------------
+Chief of Protocol
+--------------------------------------------------------------------------------
+0.0
+========================================New Item End========================================
+ruler_hqa [200]
+f1: 51.81
+em: 35.16
+sub_em: 53.12
+Total: 128
+
+real	18m13.632s
+user	0m48.198s
+sys	0m3.394s

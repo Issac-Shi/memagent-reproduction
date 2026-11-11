@@ -1,0 +1,6 @@
+# 统一 LF：脚本要原样 scp 到 Linux 服务器运行，CRLF 会让 bash 报错
+* text=auto eol=lf
+*.png binary
+*.jpg binary
+*.pdf binary
+*.tgz binary

@@ -1,0 +1,71 @@
+{
+  "run_id": "2026-11-12_A_trial-7k",
+  "group": "A",
+  "description": "RUNBOOK 第 4 步：A 组（RL-MemoryAgent-7B，分段读 + 记忆）7K 试跑",
+  "our_repo": {
+    "url": "https://github.com/Issac-Shi/memagent-reproduction",
+    "branch": "repro/baseline",
+    "commit": "104b795"
+  },
+  "commands": {
+    "cwd": "MemAgent/taskutils/memory_eval",
+    "server": "VLLM_USE_V1=0 vllm serve /root/autodl-tmp/models/RL-MemoryAgent-7B --served-model-name BytedTsinghua-SIA/RL-MemoryAgent-7B --port 8000",
+    "eval": [
+      "python ruler_hqa.py --model BytedTsinghua-SIA/RL-MemoryAgent-7B --tokenizer /root/autodl-tmp/models/RL-MemoryAgent-7B --api recurrent --length 50 --save_dir results/ruler_hqa_50 --save_file MemoryAgent-7B-5k-1k-infty --n_proc 256"
+    ]
+  },
+  "env": {
+    "DATAROOT": "/root/autodl-tmp/hotpotqa",
+    "SERVE_HOST": "127.0.0.1",
+    "SERVE_PORT": "8000",
+    "RECURRENT_CHUNK_SIZE": "5000",
+    "RECURRENT_MAX_NEW": "1024",
+    "RECURRENT_MAX_CONTEXT_LEN": "100000000000"
+  },
+  "start": "2026-11-12T02:14:01+08:00",
+  "end": "2026-11-12T02:19:41+08:00",
+  "eval_seconds": {
+    "50": 340.1
+  },
+  "cost": {
+    "gpu_hours": 0.094,
+    "price_cny_per_hour": 2.0,
+    "estimate_cny": 0.19,
+    "note": "只算评测时长；价格是 RUNBOOK 的假设（4090 约 ¥2/小时），实际以 AutoDL 账单为准"
+  },
+  "results": {
+    "ruler_hqa_50/MemoryAgent-7B-5k-1k-infty.jsonl": {
+      "n": 128,
+      "sub_em": 78.91,
+      "strict": 72.66,
+      "no_answer": 0,
+      "sha256": "7bdcb46d1eb26e37d98b38ece151c587ec941a1a21a96c46aeac6f95a12110f0"
+    }
+  },
+  "logs": [
+    "logs/A_50.log",
+    "logs/step4_trial.log",
+    "logs/step4_trial_v1_failed.log",
+    "logs/vllm_v1_startup_failure.log"
+  ],
+  "notes": [
+    "先用 V1 引擎（vLLM 0.8.2 默认）启动失败：KV cache 只剩 0.85 GiB < 1.75 GiB，见 logs/vllm_v1_startup_failure.log 和 docs/repro_notes.md；按 RUNBOOK 4.5 改用 V0 引擎，其余参数全默认。",
+    "通过标准：128 行、sub_em 在 78–84、抓不到答案的题个位数，三条都满足。"
+  ],
+  "environment": {
+    "vllm": "0.8.2",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.50.1",
+    "openai": "1.68.2",
+    "python": "3.12.3",
+    "gpu": "NVIDIA GeForce RTX 4090, 24564 MiB, 595.71.05, 8.9",
+    "cuda_driver": "CUDA Version: 13.2",
+    "vllm_engine": "V0 (VLLM_USE_V1=0)",
+    "host": "AutoDL 单卡实例（GPU 模式）"
+  },
+  "author_repo": {
+    "url": "https://github.com/BytedTsinghua-SIA/MemAgent",
+    "commit": "ef4219b23499a069cb00e5daff4c426d4c600851",
+    "info": "ef4219b 2026-05-12 Clarify vllm version"
+  }
+}

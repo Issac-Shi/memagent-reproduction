@@ -1,0 +1,243 @@
+{'DATAROOT': '/root/autodl-tmp/hotpotqa',
+ 'RECURRENT_CHUNK_SIZE': 5000,
+ 'RECURRENT_MAX_CONTEXT_LEN': 100000000000,
+ 'RECURRENT_MAX_NEW': 1024}
+Namespace(length=200, save_dir='results/ruler_hqa_200', save_file='MemoryAgent-7B-5k-1k-infty', model='BytedTsinghua-SIA/RL-MemoryAgent-7B', tokenizer='/root/autodl-tmp/models/RL-MemoryAgent-7B', n_proc=256, api='recurrent', sampling=1, force=False)
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 128 examples [00:00, 424.02 examples/s]Generating train split: 128 examples [00:00, 422.71 examples/s]
+original data len 128
+sampling data len 128
+0
+127
+  0%|          | 0/128 [00:00<?, ?it/s]user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+No previous memory
+</memory>
+
+<section>
+Document 1:
+Lovelyville
+Lovelyville is the third album by Thinking Fellers Union Local 282, released December 12, 1991 on LP and CD through Matador Records. The CD contains bonus tracks entitled "The Crowded Diaper."
+
+Document 2:
+Science Supercourse
+Science Supercourse is a free online accessible educational resource currently encompassing more than 165,000 downloadable PowerPoint lectures covering four main areas of science; Public Health, Computer Engine
+
+...(truncated)
+
+xt few seasons. Despite a sound defence, Barber did not secure a regular first team place until 1932. He scored a thousand runs for the first time that season, a feat he was to achieve eight times, while he scored over 2,000 runs in 1935. Until the Second World War broke out, Barber continued as a regular member of the Yorkshire side. After the war, he played one more full season before retiring in 1947. His career continued in club cricket and he went on to coach local sides before his death in 1968.
+
+Document 37:
+The Little Black Bag
+"The Little Black Bag" is a science fiction short story by American Cyril M. Kornbluth, first published in the July 1950 edition of "Astounding Science Fiction". It is a predecessor of sorts to the story "The Marching Morons". It won the 2001 Retroactive Hugo Award for Best Novelette (of 1951) and was also recognized as the 13th best all-time short science fiction story in a 1971 "Analog Science Fact & Fiction" poll,
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Shannon Elizabeth is an American actress and former fashion model, known for her roles in comedy films such as "American Pie", "Scary Movie" and "Jay and Silent Bob Strike Back". However, there is no mention of her portraying Corliss Archer in the film Kiss and Tell. The section also mentions that the post of Lord High Treasurer was an English government position, but there is no connection between this and the actress portraying Corliss Archer. The section does not provide the specific government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Shannon Elizabeth is an American actress and former fashion model, known for her roles in comedy films such as "American Pie", "Scary Movie" and "Jay and Silent Bob Strike Back". However, there is no mention of her portraying Corliss Archer in the film Kiss and Tell. The section also mentions that the post of Lord High Treasurer was an English governmen
+
+...(truncated)
+
+heir troops.
+
+Document 71:
+Addison Baker
+Lieutenant Colonel Addison Earl Baker (January 1, 1907 – August 1, 1943) was commander of the 93rd Bombardment Group (Heavy) in the U.S. Army Air Forces who led the group on the low-altitude Allied bombing mission of oil refineries at Ploieşti, Romania, Operation Tidal Wave. For his actions during World War II he received the United States of America's highest military decoration, the Medal of Honor.
+
+Document 72:
+The Stepford Children
+The Stepford Children is a 1987 American made-for-television science fiction-thriller film inspired by the Ira Levin novel "The Stepford Wives". It was directed by Alan J. Levi with a screenplay by Bill Bleich and starring Barbara Eden, Don Murray, Tammy Lauren, Randall Batinkoff and Pat Corley. It is the second in a series of sequels inspired by the 1972 novel and the original 1975 film "The Stepford Wives".
+
+Document 73:
+W. K. Stratton
+W.K. Stratton (William Kip Stratton) is
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Shannon Elizabeth is an American actress and former fashion model, known for her roles in comedy films such as "American Pie", "Scary Movie" and "Jay and Silent Bob Strike Back". However, there is no mention of her portraying Corliss Archer in the film Kiss and Tell. The section also mentions that the post of Lord High Treasurer was an English government position, but there is no connection between this and the actress portraying Corliss Archer. The section does not provide the specific government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell. The section does not provide any new information regarding the government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Shannon Elizabeth is an American actress and former fashion model, known for her roles in comedy films such as "American Pie", "Scary Movie" and "Jay and Silent Bob Strike Back". However, there is no mention of her portraying Corliss Archer in the film Kiss and Tell. The section also mentions that the post of Lord High Treasurer was an English governmen
+
+...(truncated)
+
+nstitutional Affairs from the First Secretary of State, a position within the government held by the Deputy Prime Minister.
+
+Document 110:
+Kate Gordon (energy analyst)
+Kate Gordon is an American lawyer, urban planner, non-profit advisor, and leader in the “green jobs” and climate risk movement. She is currently an independent consultant and Senior Advisor at the Paulson Institute, where she provides strategic support on issues related to climate change and sustainable economic growth. She is also a nonresident Fellow at the Center on Global Energy Policy at Columbia University and a regular contributor to the Wall Street Journal as one of the paper’s “Energy Experts.” She currently serves on the non-profit boards of Vote Solar, Center for Carbon Removal, and the American Jobs Project and writes a regular newsletter on clean energy and climate called "Kate's Cliffnotes"
+
+Document 111:
+Thomas Kyd
+Thomas Kyd (baptised 6 November 1558; buried 15 August
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Shannon Elizabeth is an American actress and former fashion model, known for her roles in comedy films such as "American Pie", "Scary Movie" and "Jay and Silent Bob Strike Back". However, there is no mention of her portraying Corliss Archer in the film Kiss and Tell. The section also mentions that the post of Lord High Treasurer was an English government position, but there is no connection between this and the actress portraying Corliss Archer. The section does not provide the specific government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell. The section does not provide any new information regarding the government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell. However, the section does provide information about the Secretary of State for Constitutional Affairs, which is a British Government position, created in 2003, and mentions that certain functions of the Lord Chancellor which related to the Lord Chancellor's Department were transferred to the Secretary of State. The section also mentions that Janet Marie Waldo, an American radio and voice actress, is best known in animation for voicing Judy Jetson, Nancy in "Shazzan", Penelope Pitstop, and Josie in "Josie and the Pussycats", and on radio as the title character in "Meet Corliss Archer". Therefore, it can be inferred that Janet Waldo may have portrayed Corliss Archer in the TV series "Meet Corliss Archer", which is an adaptation of the radio series of the same name. The section does not provide the specific government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell, but it does provide information about the Secretary of State for Constitutional Affairs, which is a British Government position.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Shannon Elizabeth is an American actress and former fashion model, known for her roles in comedy films such as "American Pie", "Scary Movie" and "Jay and Silent Bob Strike Back". However, there is no mention of her portraying Corliss Archer in the film Kiss and Tell. The section also mentions that the post of Lord High Treasurer was an English governmen
+
+...(truncated)
+
+ witness an Earthrise; escape the gravity of another celestial body (Earth's moon); and re-enter the gravitational well of Earth. The 1968 mission, the third flight of the Saturn V rocket and that rocket's first crewed launch, was also the first human spaceflight launch from the Kennedy Space Center, Florida, located adjacent to Cape Canaveral Air Force Station.
+
+Document 141:
+Race Wars (The Fast and the Furious)
+Race Wars is a drag racing event in the movie "The Fast and the Furious", which describes the underground illegal racing scene in Los Angeles, California, that character Dominic Toretto (Vin Diesel) and his team invent. Race Wars is not mentioned again until they reference it in the seventh installment of the "Fast and Furious" franchise, "Furious 7". The event consists of drag races where racers compete for large amounts of cash or pink slips, while beautiful women dance around the cars and throughout the event. There is a real life event
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Shannon Elizabeth is an American actress and former fashion model, known for her roles in comedy films such as "American Pie", "Scary Movie" and "Jay and Silent Bob Strike Back". However, there is no mention of her portraying Corliss Archer in the film Kiss and Tell. The section also mentions that the post of Lord High Treasurer was an English government position, but there is no connection between this and the actress portraying Corliss Archer. The section does not provide the specific government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell. The section does not provide any new information regarding the government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell. However, the section does provide information about the Secretary of State for Constitutional Affairs, 
+
+...(truncated)
+
+ord Chancellor which related to the Lord Chancellor's Department were transferred to the Secretary of State. The section also mentions that Janet Marie Waldo, an American radio and voice actress, is best known in animation for voicing Judy Jetson, Nancy in "Shazzan", Penelope Pitstop, and Josie in "Josie and the Pussycats", and on radio as the title character in "Meet Corliss Archer". Therefore, it can be inferred that Janet Waldo may have portrayed Corliss Archer in the TV series "Meet Corliss Archer", which is an adaptation of the radio series of the same name. The section does not provide the specific government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell, but it does provide information about the Secretary of State for Constitutional Affairs, which is a British Government position. The section does not provide any new information regarding the government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Shannon Elizabeth is an American actress and former fashion model, known for her roles in comedy films such as "American Pie", "Scary Movie" and "Jay and Silent Bob Strike Back". However, there is no mention of her portraying Corliss Archer in the film Kiss and Tell. The section also mentions that the post of Lord High Treasurer was an English governmen
+
+...(truncated)
+
+ three regiments known as "1st Arkansas" during the war. The second unit with the designation of "1st Arkansas" was the 1st Infantry, Arkansas State Troops, which was mustered into Confederate service at Pitman's Ferry, Arkansas, on 23 July 1861, under the command of Colonel Patrick Cleburne; this unit was eventually redesignated as the 15th Arkansas Volunteer Infantry. The third unit bearing the title "1st Arkansas" was the 1st Arkansas Volunteer Infantry, which served with the Union Army.
+
+Document 173:
+Robert J. Dole Institute of Politics
+The Robert J. Dole Institute of Politics, often shortened to the Dole Institute, is a nonpartisan political institution housed at the University of Kansas founded by the former U.S. Senator from Kansas and 1996 Republican presidential candidate Bob Dole. Opened on July 22, 2003 - Dole's 80th birthday - the institute's $11 million, 28000 sqft facility houses Dole's papers and hosts frequent political events. The
+</section>
+
+Updated memory:
+
+assistant:
+  1%|          | 1/128 [27:32<58:18:25, 1652.80s/it]  2%|▏         | 2/128 [27:43<24:01:55, 686.63s/it]   2%|▏         | 3/128 [27:44<12:58:43, 373.79s/it]  3%|▎         | 4/128 [27:44<7:47:37, 226.27s/it]   4%|▍         | 5/128 [27:47<4:58:20, 145.53s/it]  5%|▍         | 6/128 [27:47<3:15:23, 96.09s/it]   6%|▋         | 8/128 [27:48<1:38:10, 49.08s/it]  7%|▋         | 9/128 [27:48<1:12:05, 36.35s/it]  8%|▊         | 10/128 [27:49<52:13, 26.56s/it]   9%|▊         | 11/128 [27:49<37:29, 19.23s/it]  9%|▉         | 12/128 [27:51<27:37, 14.29s/it] 10%|█         | 13/128 [27:51<19:31, 10.19s/it] 11%|█         | 14/128 [27:51<13:44,  7.24s/it] 12%|█▎        | 16/128 [27:51<07:24,  3.96s/it] 14%|█▍        | 18/128 [27:51<04:28,  2.44s/it] 16%|█▌        | 20/128 [27:52<02:59,  1.67s/it] 16%|█▋        | 21/128 [27:52<02:30,  1.41s/it] 17%|█▋        | 22/128 [27:52<01:58,  1.12s/it] 19%|█▉        | 24/128 [27:53<01:20,  1.30it/s] 20%|█▉        | 25/128 [27:53<01:06,  1.55it/s] 20%|██        | 26/128 [27:53<00:57,  1.77it/s] 21%|██        | 27/128 [27:54<00:50,  2.01it/s] 22%|██▏       | 28/128 [27:54<00:47,  2.10it/s] 23%|██▎       | 29/128 [27:54<00:41,  2.37it/s] 23%|██▎       | 30/128 [27:57<01:38,  1.01s/it] 26%|██▌       | 33/128 [27:57<00:45,  2.09it/s] 27%|██▋       | 34/128 [27:57<00:38,  2.41it/s] 29%|██▉       | 37/128 [27:57<00:23,  3.90it/s] 30%|██▉       | 38/128 [27:58<00:29,  3.02it/s] 30%|███       | 39/128 [27:58<00:25,  3.44it/s] 33%|███▎      | 42/128 [27:58<00:15,  5.49it/s] 36%|███▌      | 46/128 [27:58<00:09,  9.03it/s] 40%|███▉      | 51/128 [27:59<00:07, 10.92it/s] 42%|████▏     | 54/128 [27:59<00:06, 11.64it/s] 44%|████▍     | 56/128 [27:59<00:05, 12.37it/s] 45%|████▌     | 58/128 [28:00<00:07,  8.93it/s] 49%|████▉     | 63/128 [28:00<00:05, 12.42it/s] 53%|█████▎    | 68/128 [28:00<00:04, 13.96it/s] 56%|█████▋    | 72/128 [28:00<00:03, 15.81it/s] 61%|██████    | 78/128 [28:00<00:02, 19.66it/s] 64%|██████▍   | 82/128 [28:01<00:02, 16.94it/s] 68%|██████▊   | 87/128 [28:01<00:02, 17.05it/s] 71%|███████   | 91/128 [28:01<00:02, 16.48it/s] 74%|███████▍  | 95/128 [28:01<00:01, 18.87it/s] 81%|████████▏ | 104/128 [28:02<00:00, 27.04it/s] 84%|████████▍ | 108/128 [28:02<00:00, 25.20it/s] 87%|████████▋ | 111/128 [28:02<00:00, 24.52it/s] 89%|████████▉ | 114/128 [28:02<00:00, 22.41it/s] 91%|█████████▏| 117/128 [28:09<00:06,  1.78it/s] 93%|█████████▎| 119/128 [28:13<00:07,  1.20it/s] 95%|█████████▍| 121/128 [28:18<00:08,  1.17s/it] 95%|█████████▌| 122/128 [28:19<00:07,  1.26s/it] 96%|█████████▌| 123/128 [28:20<00:05,  1.09s/it] 98%|█████████▊| 125/128 [28:20<00:02,  1.23it/s] 98%|█████████▊| 126/128 [28:24<00:02,  1.44s/it]100%|██████████| 128/128 [28:30<00:00,  1.99s/it]100%|██████████| 128/128 [28:30<00:00, 13.37s/it]
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Shannon Elizabeth is an American actress and former fashion model, known for her roles in comedy films such as "American Pie", "Scary Movie" and "Jay and Silent Bob Strike Back". However, there is no mention of her portraying Corliss Archer in the film Kiss and Tell. The section also mentions that the post of Lord High Treasurer was an English government position, but there is no connection between this and the actress portraying Corliss Archer. The section does not provide the specific government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell. The section does not provide any new information regarding the government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell. However, the section does provide information about the Secretary of State for Constitutional Affairs, 
+
+...(truncated)
+
+ment position held by the woman who portrayed Corliss Archer in the film Kiss and Tell. The section also mentions that Shirley Temple Black (April 23, 1928 – February 10, 2014) was an American actress, singer, dancer, businesswoman, and diplomat who was Hollywood's number one box-office draw as a child actress from 1935 to 1938. As an adult, she was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States. Therefore, it can be inferred that Shirley Temple Black may have held the position of United States ambassador, which is a government position, in addition to her other roles. The section does not provide the specific government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell, but it does provide information about the Secretary of State for Constitutional Affairs, which is a British Government position, and the position of United States ambassador, which is a government position.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Shannon Elizabeth is an American actress and former fashion model, known for her roles in comedy films such as "American Pie", "Scary Movie" and "Jay and Silent Bob Strike Back". However, there is no mention of her portraying Corliss Archer in the film Kiss and Tell. The section also mentions that the post of Lord High Treasurer was an English governmen
+
+...(truncated)
+
+ceway hosted the first ever March Meet in 1959 and it helped establish the fledgling National Hot Rod Association's (NHRA) legitimacy.
+
+Document 199:
+United States midterm election
+Midterm elections in the United States refer to general elections in the United States that are held two years after the quadrennial (four-year) elections for the President of the United States (i.e. near the midpoint of the four-year presidential term). Federal offices that are up for election during the midterms are members of the United States Congress, including all 435 seats in the United States House of Representatives, and the full terms for 33 or 34 of the 100 seats in the United States Senate.
+
+Document 200:
+Kwasy, Masovian Voivodeship
+Kwasy is a village in the administrative district of Gmina Zbuczyn, within Siedlce County, Masovian Voivodeship, in east-central Poland. It lies approximately 8 km east of Zbuczyn, 21 km east of Siedlce, and 107 km east of Warsaw.
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Kiss and Tell is a 1945 American comedy film starring then 17-year-old Shirley Temple as Corliss Archer. The section also mentions that Shirley Temple Black (April 23, 1928 – February 10, 2014) was an American actress, singer, dancer, businesswoman, and diplomat who was Hollywood's number one box-office draw as a child actress from 1935 to 1938. As an adult, she was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States. Therefore, it can be inferred that Shirley Temple Black may have held the position of United States ambassador, which is a government position, in addition to her other roles. The section does not provide the specific government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell, but it does provide information about the Secretary of State for Constitutional Affairs, which is a British Government position, and the position of United States ambassador, which is a government position.
+user:
+You are presented with a problem and a previous memory. Please answer the problem based on the previous memory and format your response as follows "Therefore, the answer is (insert answer here)".
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Kiss and Tell is a 1945 American comedy film starring then 17-year-old Shirley Temple as Corliss Archer. The section also mentions that Shirley Temple Black (April 23, 1928 – February 10, 2014) was an American actress, singer, dancer, businesswoman, and diplomat who was Hollywood's number one box-office draw as a child actress from 1935 to 1938. As an adult, she was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States. Therefore, it can be inferred that Shirley Temple Black may have held the position of United States ambassador, which is a government position, in addition to her other roles. The section does not provide the specific government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell, but it does provide information about the Secretary of State for Constitutional Affairs, which is a British Government position, and the position of United States ambassador, which is a government position.
+</memory>
+
+Your answer:
+
+assistant:
+Therefore, the answer is United States ambassador.
+Time taken: 1710.9359123706818 seconds
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 4136.39it/s]
+Time taken: 0.0011510848999023438 seconds
+========================================New Item Start========================================
+Therefore, the answer is United States ambassador.
+--------------------------------------------------------------------------------
+United States ambassador
+--------------------------------------------------------------------------------
+Chief of Protocol
+--------------------------------------------------------------------------------
+0.0
+========================================New Item End========================================
+ruler_hqa [200]
+f1: 73.72
+em: 61.72
+sub_em: 75.78
+Total: 128
+
+real	28m36.439s
+user	0m47.932s
+sys	0m3.312s

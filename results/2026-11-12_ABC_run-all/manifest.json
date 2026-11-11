@@ -1,0 +1,203 @@
+{
+  "run_id": "2026-11-12_ABC_run-all",
+  "group": "ABC",
+  "description": "RUNBOOK 第 5–6 步：run_all.sh 按 A → C → B 依次换模型跑完保险版范围、补跑缺题、汇总",
+  "our_repo": {
+    "url": "https://github.com/Issac-Shi/memagent-reproduction",
+    "branch": "repro/baseline",
+    "commit": "6420c6e"
+  },
+  "commands": {
+    "cwd": "MemAgent/taskutils/memory_eval",
+    "launcher": "bash /root/autodl-tmp/run_all.sh",
+    "run_all_settings": {
+      "C_MAXLEN": 42000,
+      "AUTO_SHUTDOWN": 0,
+      "VLLM_USE_V1": 0,
+      "MAX_TRIES": 3
+    }
+  },
+  "groups": {
+    "A": {
+      "start": "2026-11-12T02:26:33+08:00",
+      "end": "2026-11-12T04:23:14+08:00",
+      "gpu_hours": 1.945,
+      "server": "VLLM_USE_V1=0 vllm serve /root/autodl-tmp/models/RL-MemoryAgent-7B --served-model-name BytedTsinghua-SIA/RL-MemoryAgent-7B --port 8000",
+      "eval": [
+        "python ruler_hqa.py --model BytedTsinghua-SIA/RL-MemoryAgent-7B --tokenizer /root/autodl-tmp/models/RL-MemoryAgent-7B --api recurrent --length 100 --save_dir results/ruler_hqa_100 --save_file MemoryAgent-7B-5k-1k-infty --n_proc 256",
+        "python ruler_hqa.py --model BytedTsinghua-SIA/RL-MemoryAgent-7B --tokenizer /root/autodl-tmp/models/RL-MemoryAgent-7B --api recurrent --length 200 --save_dir results/ruler_hqa_200 --save_file MemoryAgent-7B-5k-1k-infty --n_proc 256",
+        "python ruler_hqa.py --model BytedTsinghua-SIA/RL-MemoryAgent-7B --tokenizer /root/autodl-tmp/models/RL-MemoryAgent-7B --api recurrent --length 400 --save_dir results/ruler_hqa_400 --save_file MemoryAgent-7B-5k-1k-infty --n_proc 256"
+      ],
+      "env": {
+        "DATAROOT": "/root/autodl-tmp/hotpotqa",
+        "SERVE_HOST": "127.0.0.1",
+        "SERVE_PORT": "8000",
+        "RECURRENT_CHUNK_SIZE": "5000",
+        "RECURRENT_MAX_NEW": "1024",
+        "RECURRENT_MAX_CONTEXT_LEN": "100000000000"
+      }
+    },
+    "C": {
+      "start": "2026-11-12T04:23:18+08:00",
+      "end": "2026-11-12T04:40:12+08:00",
+      "gpu_hours": 0.282,
+      "server": "VLLM_USE_V1=0 vllm serve /root/autodl-tmp/models/Qwen2.5-7B-Instruct-128k --served-model-name Qwen2.5-7B-Instruct-128k --port 8000 --max-model-len 42000",
+      "eval": [
+        "python ruler_hqa.py --model Qwen2.5-7B-Instruct-128k --tokenizer /root/autodl-tmp/models/Qwen2.5-7B-Instruct-128k --api openai --length 50 --save_dir results/ruler_hqa_50 --save_file Qwen-7B-120k+10k --n_proc 256",
+        "python ruler_hqa.py --model Qwen2.5-7B-Instruct-128k --tokenizer /root/autodl-tmp/models/Qwen2.5-7B-Instruct-128k --api openai --length 100 --save_dir results/ruler_hqa_100 --save_file Qwen-7B-120k+10k --n_proc 256",
+        "python ruler_hqa.py --model Qwen2.5-7B-Instruct-128k --tokenizer /root/autodl-tmp/models/Qwen2.5-7B-Instruct-128k --api openai --length 200 --save_dir results/ruler_hqa_200 --save_file Qwen-7B-120k+10k --n_proc 256"
+      ],
+      "env": {
+        "DATAROOT": "/root/autodl-tmp/hotpotqa",
+        "SERVE_HOST": "127.0.0.1",
+        "SERVE_PORT": "8000"
+      }
+    },
+    "B": {
+      "start": "2026-11-12T04:40:16+08:00",
+      "end": "2026-11-12T05:51:09+08:00",
+      "gpu_hours": 1.181,
+      "server": "VLLM_USE_V1=0 vllm serve /root/autodl-tmp/models/Qwen2.5-7B-Instruct --served-model-name Qwen/Qwen2.5-7B-Instruct --port 8000",
+      "eval": [
+        "python ruler_hqa.py --model Qwen/Qwen2.5-7B-Instruct --tokenizer /root/autodl-tmp/models/Qwen2.5-7B-Instruct --api recurrent --length 50 --save_dir results/ruler_hqa_50 --save_file Qwen-7B-5k-1k-infty --n_proc 256",
+        "python ruler_hqa.py --model Qwen/Qwen2.5-7B-Instruct --tokenizer /root/autodl-tmp/models/Qwen2.5-7B-Instruct --api recurrent --length 100 --save_dir results/ruler_hqa_100 --save_file Qwen-7B-5k-1k-infty --n_proc 256",
+        "python ruler_hqa.py --model Qwen/Qwen2.5-7B-Instruct --tokenizer /root/autodl-tmp/models/Qwen2.5-7B-Instruct --api recurrent --length 200 --save_dir results/ruler_hqa_200 --save_file Qwen-7B-5k-1k-infty --n_proc 256",
+        "python ruler_hqa.py --model Qwen/Qwen2.5-7B-Instruct --tokenizer /root/autodl-tmp/models/Qwen2.5-7B-Instruct --api recurrent --length 400 --save_dir results/ruler_hqa_400 --save_file Qwen-7B-5k-1k-infty --n_proc 256"
+      ],
+      "env": {
+        "DATAROOT": "/root/autodl-tmp/hotpotqa",
+        "SERVE_HOST": "127.0.0.1",
+        "SERVE_PORT": "8000",
+        "RECURRENT_CHUNK_SIZE": "5000",
+        "RECURRENT_MAX_NEW": "1024",
+        "RECURRENT_MAX_CONTEXT_LEN": "100000000000"
+      }
+    }
+  },
+  "start": "2026-11-12T02:26:33+08:00",
+  "end": "2026-11-12T05:51:22+08:00",
+  "eval_seconds": {
+    "A_100": 764.0,
+    "A_200": 1716.4,
+    "A_400": 4479.7,
+    "C_50": 120.1,
+    "C_100": 259.4,
+    "C_200": 594.7,
+    "B_50": 243.9,
+    "B_100": 542.2,
+    "B_200": 1093.6,
+    "B_400": 2332.8
+  },
+  "cost": {
+    "gpu_hours": 3.414,
+    "price_cny_per_hour": 2.0,
+    "estimate_cny": 6.83,
+    "note": "run_all.log 首尾时间；价格同上"
+  },
+  "results": {
+    "ruler_hqa_100/MemoryAgent-7B-5k-1k-infty.jsonl": {
+      "n": 128,
+      "sub_em": 79.69,
+      "strict": 71.09,
+      "no_answer": 0,
+      "sha256": "16844ee812d5801b3b61011f2268508acef2ea6a10c248b567fdfba57c4c9223"
+    },
+    "ruler_hqa_200/MemoryAgent-7B-5k-1k-infty.jsonl": {
+      "n": 128,
+      "sub_em": 75.78,
+      "strict": 68.75,
+      "no_answer": 0,
+      "sha256": "813b748f301f3963c545cef64258ca51c4a1acfa0699f63ef98a0706d4fbf7c1"
+    },
+    "ruler_hqa_400/MemoryAgent-7B-5k-1k-infty.jsonl": {
+      "n": 128,
+      "sub_em": 78.91,
+      "strict": 70.31,
+      "no_answer": 0,
+      "sha256": "703a13ea4d2a5f7ab4514848b29a82b0a395914da1c6ab132415d75806059052"
+    },
+    "ruler_hqa_50/Qwen-7B-120k+10k.jsonl": {
+      "n": 128,
+      "sub_em": 53.12,
+      "strict": 47.66,
+      "no_answer": 1,
+      "sha256": "4c0f7347efb6d5e282d2b075403804c97be17ce4ee38f639afa36feb9f2f5dde"
+    },
+    "ruler_hqa_100/Qwen-7B-120k+10k.jsonl": {
+      "n": 128,
+      "sub_em": 54.69,
+      "strict": 46.09,
+      "no_answer": 3,
+      "sha256": "c4401fd69c0204741691ecfc9e4648a72261ec70cfcc49fbe9b35b7274fc122e"
+    },
+    "ruler_hqa_200/Qwen-7B-120k+10k.jsonl": {
+      "n": 128,
+      "sub_em": 48.44,
+      "strict": 41.41,
+      "no_answer": 1,
+      "sha256": "bbddf09770eed9814700a3e4310cac320cd7f0ba99ecc83352613207cf08977b"
+    },
+    "ruler_hqa_50/Qwen-7B-5k-1k-infty.jsonl": {
+      "n": 128,
+      "sub_em": 57.81,
+      "strict": 51.56,
+      "no_answer": 0,
+      "sha256": "872d34b52bbd3aa70ad1c5dbef53204b7ef789646f8415086124b7fffc35788b"
+    },
+    "ruler_hqa_100/Qwen-7B-5k-1k-infty.jsonl": {
+      "n": 128,
+      "sub_em": 53.91,
+      "strict": 47.66,
+      "no_answer": 2,
+      "sha256": "894ff56ebf38cefd7a0ca2f5a8e92b15a9396f0598e8659496a3d783ad61dcec"
+    },
+    "ruler_hqa_200/Qwen-7B-5k-1k-infty.jsonl": {
+      "n": 128,
+      "sub_em": 53.12,
+      "strict": 48.44,
+      "no_answer": 0,
+      "sha256": "4fbd04f6a06bc6c09de99bb526c4eab96236ae3d39a6c9e30f1694fb760a50cc"
+    },
+    "ruler_hqa_400/Qwen-7B-5k-1k-infty.jsonl": {
+      "n": 128,
+      "sub_em": 50.0,
+      "strict": 45.31,
+      "no_answer": 0,
+      "sha256": "fa26a9baa68dac5208fbbf3233f61daf25ebbb6f04f31ac6e4dccdc9c8a1a23b"
+    }
+  },
+  "logs": [
+    "logs/run_all.log",
+    "logs/run_all_summary.txt",
+    "logs/A_100.log",
+    "logs/A_200.log",
+    "logs/A_400.log",
+    "logs/C_50.log",
+    "logs/C_100.log",
+    "logs/C_200.log",
+    "logs/B_50.log",
+    "logs/B_100.log",
+    "logs/B_200.log",
+    "logs/B_400.log"
+  ],
+  "notes": [
+    "A 组 7K 沿用试跑结果（run_all 检查到已有 128 条直接跳过），见 2026-11-12_A_trial-7k。",
+    "logs/run_all_summary.txt 是 run_all 汇总服务器上全部结果文件的总表（含试跑和 boxed 对照）。"
+  ],
+  "environment": {
+    "vllm": "0.8.2",
+    "torch": "2.6.0+cu124",
+    "transformers": "4.50.1",
+    "openai": "1.68.2",
+    "python": "3.12.3",
+    "gpu": "NVIDIA GeForce RTX 4090, 24564 MiB, 595.71.05, 8.9",
+    "cuda_driver": "CUDA Version: 13.2",
+    "vllm_engine": "V0 (VLLM_USE_V1=0)",
+    "host": "AutoDL 单卡实例（GPU 模式）"
+  },
+  "author_repo": {
+    "url": "https://github.com/BytedTsinghua-SIA/MemAgent",
+    "commit": "ef4219b23499a069cb00e5daff4c426d4c600851",
+    "info": "ef4219b 2026-05-12 Clarify vllm version"
+  }
+}

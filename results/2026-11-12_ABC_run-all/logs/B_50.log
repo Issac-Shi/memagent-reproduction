@@ -1,0 +1,102 @@
+{'DATAROOT': '/root/autodl-tmp/hotpotqa',
+ 'RECURRENT_CHUNK_SIZE': 5000,
+ 'RECURRENT_MAX_CONTEXT_LEN': 100000000000,
+ 'RECURRENT_MAX_NEW': 1024}
+Namespace(length=50, save_dir='results/ruler_hqa_50', save_file='Qwen-7B-5k-1k-infty', model='Qwen/Qwen2.5-7B-Instruct', tokenizer='/root/autodl-tmp/models/Qwen2.5-7B-Instruct', n_proc=256, api='recurrent', sampling=1, force=False)
+original data len 128
+sampling data len 128
+0
+127
+  0%|          | 0/128 [00:00<?, ?it/s]user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+No previous memory
+</memory>
+
+<section>
+Document 1:
+Dying of the Light (film)
+Dying of the Light is a 2014 American psychological thriller film written and directed by Paul Schrader and starring Nicolas Cage, Anton Yelchin and Irène Jacob about a government agent who must track down and kill a terrorist before he loses his full memory from a disease. It was released theatrically and through VOD formats by Lionsgate on December 5, 2014. The film received extremely negative reviews, with controver
+
+...(truncated)
+
+he emerging mass market consumer for the first time. It was the first independently designed and built V8 engine produced by Ford for mass production, and it ranks as one of the company's most important developments. A fascination with ever-more-powerful engines was perhaps the most salient aspect of the American car and truck market for a half century, from 1923 until 1973. The Ford flathead V8 was perfectly in tune with the cultural moment of its introduction, leading the way into a future of which the Ford company was a principal architect. Thus it became a phenomenal success. The engine design, with various changes but no major ones, was installed in Ford passenger cars and trucks until 1953, making the engine's 21-year production run for the U.S. consumer market longer than the 19-year run of the Ford Model T engine for that market. The engine was on Ward's list of the 10 best engines of the 20th century. It was a staple of hot rodders in the 
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+Janet Waldo (February 4, 1920 – June 12, 2016) was an American radio and voice actress. She is best known in animation for voicing Judy Jetson, Nancy in "Shazzan", Penelope Pitstop, and Josie in "Josie and the Pussycats", and on radio as the title character in "Meet Corliss Archer". Corliss Archer is a radio program from the Golden Age of radio. Therefore, the woman who portrayed Corliss Archer in the film "Kiss and Tell" is Janet Waldo. However, it should be noted that the information about her portrayal in "Kiss and Tell" is not explicitly stated in the given text, only her association with the radio program "Meet Corliss Archer" is mentioned. Further research would be needed to confirm if she voiced Corliss Archer in the film.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+Janet Waldo (February 4, 1920 – June 12, 2016) was an American radio and voice actress. She is best known in animation for voicing Judy Jetson, Nancy in "Shazzan", Penelope Pitstop, and Josie in "Josie and the Pussycats", and on radio as the title character in "Meet Corliss Archer". Corliss Archer is a radio program from the Golden Age of radio. Therefore, the woman who portrayed Corliss Archer in the film "Kiss and Tell" is Janet Waldo. However, it should be noted that the infor
+
+...(truncated)
+
+ey Temple as Corliss Archer. In the film, two teenage girls cause their respective parents much concern when they start to become interested in boys. The parents' bickering about which girl is the worse influence causes more problems than it solves.
+
+Document 49:
+Belle &amp; Sebastian: The Adventure Continues
+Belle & Sebastian: The Adventure Continues (original title: Belle et Sébastien, l'aventure continue) is a 2015 French adventure film. It is directed by Christian Duguay. The film is the sequel to the 2013 film "Belle and Sebastian".
+
+Document 50:
+Church of St Mary Major, Exeter
+The Church of St Mary Major, formerly Exeter Minster, was a historic church and parish in the City of Exeter, Devon, dating from the 7th century. It pre-dated the first Exeter Cathedral by some five centuries, was rebuilt several times, but was finally demolished in 1971. It was situated to the immediate south-west of Exeter Cathedral, the site today being a grass lawn.
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+Janet Waldo (February 4, 1920 – June 12, 2016) was an American radio and voice actress. She is best known in animation for voicing Judy Jetson, Nancy in "Shazzan", Penelope Pitstop, and Josie in "Josie and the Pussycats", and on radio as the title character in "Meet Corliss Archer". "Meet Corliss Archer" is an American television sitcom that aired on CBS and in syndication. The radio series of the same name was based on a series of short stories by F. Hugh Herbert. Janet Waldo voiced Corliss Archer in the radio program. The 1945 film "Kiss and Tell" starred then 17-year-old Shirley Temple as Corliss Archer. Its sequel, "A Kiss for Corliss," was released in 1949. "A Kiss for Corliss" is a film where Janet Waldo is credited as a production staff member, specifically as a dialogue coach. Therefore, the woman who portrayed Corliss Archer in the film "Kiss and Tell" is Shirley Temple, and the government position held by the person who voiced Corliss Archer on the radio, Janet Waldo, is the Lord High Treasurer, which was a British government position. However, this last piece of information is incorrect as Janet Waldo was a voice actress and not a government official. She did not hold the position of Lord High Treasurer. No such information exists for Janet Waldo regarding a government position, so the correct answer to the original question is that Shirley Temple portrayed Corliss Archer in the film "Kiss and Tell," and no government position is associated with Janet Waldo in this context.
+user:
+  1%|          | 1/128 [03:46<8:00:26, 226.98s/it]  2%|▏         | 2/128 [03:47<3:17:23, 94.00s/it]   3%|▎         | 4/128 [03:48<1:12:35, 35.12s/it]  6%|▋         | 8/128 [03:48<25:25, 12.71s/it]    7%|▋         | 9/128 [03:48<20:33, 10.36s/it]  9%|▉         | 12/128 [03:49<11:10,  5.78s/it] 11%|█         | 14/128 [03:49<07:44,  4.08s/it] 14%|█▍        | 18/128 [03:49<04:08,  2.26s/it] 16%|█▋        | 21/128 [03:49<02:44,  1.54s/it] 18%|█▊        | 23/128 [03:50<02:04,  1.18s/it] 20%|██        | 26/128 [03:50<01:21,  1.25it/s] 23%|██▎       | 29/128 [03:50<00:54,  1.81it/s] 24%|██▍       | 31/128 [03:50<00:43,  2.22it/s] 32%|███▏      | 41/128 [03:50<00:16,  5.37it/s] 36%|███▌      | 46/128 [03:51<00:12,  6.63it/s] 38%|███▊      | 48/128 [03:51<00:10,  7.36it/s] 41%|████      | 52/128 [03:51<00:08,  8.60it/s] 45%|████▍     | 57/128 [03:51<00:05, 11.92it/s] 47%|████▋     | 60/128 [03:51<00:05, 12.77it/s] 51%|█████     | 65/128 [03:52<00:03, 16.16it/s] 56%|█████▋    | 72/128 [03:52<00:02, 22.55it/s] 66%|██████▌   | 84/128 [03:52<00:01, 37.69it/s] 70%|███████   | 90/128 [03:52<00:01, 33.54it/s] 74%|███████▍  | 95/128 [03:52<00:01, 32.88it/s] 80%|███████▉  | 102/128 [03:52<00:00, 34.11it/s] 84%|████████▎ | 107/128 [03:53<00:01, 16.04it/s] 87%|████████▋ | 111/128 [03:54<00:01, 12.40it/s] 89%|████████▉ | 114/128 [03:54<00:01, 13.89it/s] 91%|█████████▏| 117/128 [03:54<00:00, 13.71it/s] 94%|█████████▍| 120/128 [03:54<00:00, 12.90it/s] 95%|█████████▌| 122/128 [03:55<00:00,  9.41it/s] 97%|█████████▋| 124/128 [03:56<00:00,  4.54it/s] 98%|█████████▊| 126/128 [03:57<00:00,  3.87it/s] 99%|█████████▉| 127/128 [03:58<00:00,  2.52it/s]100%|██████████| 128/128 [03:58<00:00,  1.87s/it]
+You are presented with a problem and a previous memory. Please answer the problem based on the previous memory and format your response as follows "Therefore, the answer is (insert answer here)".
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+Janet Waldo (February 4, 1920 – June 12, 2016) was an American radio and voice actress. She is best known in animation for voicing Judy Jetson, Nancy in "Shazzan", Penelope Pitstop, and Josie in "Josie and the Pussycats", and on radio as the title character in "Meet Corliss Archer". "Meet Corliss Archer" is an American television sitcom that aired on CBS and in syndication. The radio series of the same name was based on a series of short stories by F. Hugh Herbert. Janet Waldo voiced Corliss Archer in the radio program. The 1945 film "Kiss and Tell" starred then 17-year-old Shirley Temple as Corliss Archer. Its sequel, "A Kiss for Corliss," was released in 1949. "A Kiss for Corliss" is a film where Janet Waldo is credited as a production staff member, specifically as a dialogue coach. Therefore, the woman who portrayed Corliss Archer in the film "Kiss and Tell" is Shirley Temple, and the government position held by the person who voiced Corliss Archer on the radio, Janet Waldo, is the Lord High Treasurer, which was a British government position. However, this last piece of information is incorrect as Janet Waldo was a voice actress and not a government official. She did not hold the position of Lord High Treasurer. No such information exists for Janet Waldo regarding a government position, so the correct answer to the original question is that Shirley Temple portrayed Corliss Archer in the film "Kiss and Tell," and no government position is associated with Janet Waldo in this context.
+</memory>
+
+Your answer:
+
+assistant:
+Therefore, the answer is that Shirley Temple portrayed Corliss Archer in the film "Kiss and Tell," and no government position is associated with Janet Waldo in this context.
+Time taken: 238.77555656433105 seconds
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 3819.95it/s]
+Time taken: 0.0011053085327148438 seconds
+========================================New Item Start========================================
+Therefore, the answer is that Shirley Temple portrayed Corliss Archer in the film "Kiss and Tell," and no government position is associated with Janet Waldo in this context.
+--------------------------------------------------------------------------------
+that Shirley Temple portrayed Corliss Archer in the film "Kiss and Tell," and no government position is associated with Janet Waldo in this context
+--------------------------------------------------------------------------------
+Chief of Protocol
+--------------------------------------------------------------------------------
+0.0
+========================================New Item End========================================
+ruler_hqa [50]
+f1: 53.1
+em: 35.16
+sub_em: 57.81
+Total: 128
+
+real	4m3.900s
+user	0m15.183s
+sys	0m2.666s

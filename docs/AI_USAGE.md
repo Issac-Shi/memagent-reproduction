@@ -31,3 +31,16 @@
 
 - 交给 Claude Code 的任务：通读交接文档后，按手册在 AutoDL（RTX 4090）上自主完成第 1–6 步；遇到不达标、超预算、删数据、偏离已定设置时停下来问。
 - 同时负责：建私有 GitHub 仓库、按分支 + tag 的规则提交、每次运行写 manifest、维护 README 和本文件。
+- 人工给出的指示：开始前先通读文档提问；全程用 GPU 模式，不切无卡模式；SSH 下要加的 PATH 和 TMPDIR；把自主执行和版本管理规则写进 `CLAUDE.md` 第 12 节。
+
+#### 2026-11-12 实际完成的工作（Claude Code）
+
+| 环节 | Claude Code 做了什么 | 产出 |
+| --- | --- | --- |
+| 第 1–3 步 | 装锁定依赖并核对版本；下载代码、模型、数据并校验；建 YaRN 128K 目录；统计各长度 token 数，算出 C 组 `--max-model-len 42000` | `scripts/server/step1_*`–`step3_*`、`docs/data_stats.md` |
+| 第 4 步 | A 组 7K 试跑。vLLM 默认的 V1 引擎在 24G 卡上起不来，Claude Code 从日志判断是 KV cache 不够，按手册 4.5 改用 V0 引擎，其余参数不变。另跑了 `\boxed{}` 对照 | `docs/repro_notes.md`、`results/2026-11-12_A_*` |
+| 第 5–6 步 | 填好 `run_all.sh` 的 `C_MAXLEN`、`AUTO_SHUTDOWN=0`、V0 设置后运行，在后台等待并检查各阶段 | `results/2026-11-12_ABC_run-all` |
+| 收尾 | 写导出脚本生成 manifest；下载结果并在本地逐文件核对（行数、`_id`、sha256、重算分数）；核对无误后关机；填结果对照表，按三条标准判断是否复现成功 | `scripts/server/make_export.py`、`scripts/local/verify_results.py`、`results/README.md` |
+| 仓库 | 建私有仓库，以 submodule 引入作者代码；按分支、tag、CHANGELOG 的规则提交和发布 | v0.1.0、v0.2.0 |
+
+所有数字都来自服务器上跑出来的结果文件，由脚本计算，再在本地重算核对；Claude Code 没有手填或估计任何结果。花费是按 ¥2/GPU 小时的估算，实际以 AutoDL 账单为准。

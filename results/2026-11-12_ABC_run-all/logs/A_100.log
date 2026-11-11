@@ -1,0 +1,142 @@
+{'DATAROOT': '/root/autodl-tmp/hotpotqa',
+ 'RECURRENT_CHUNK_SIZE': 5000,
+ 'RECURRENT_MAX_CONTEXT_LEN': 100000000000,
+ 'RECURRENT_MAX_NEW': 1024}
+Namespace(length=100, save_dir='results/ruler_hqa_100', save_file='MemoryAgent-7B-5k-1k-infty', model='BytedTsinghua-SIA/RL-MemoryAgent-7B', tokenizer='/root/autodl-tmp/models/RL-MemoryAgent-7B', n_proc=256, api='recurrent', sampling=1, force=False)
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 128 examples [00:00, 1036.69 examples/s]Generating train split: 128 examples [00:00, 1031.98 examples/s]
+original data len 128
+sampling data len 128
+0
+127
+  0%|          | 0/128 [00:00<?, ?it/s]user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+No previous memory
+</memory>
+
+<section>
+Document 1:
+Billboard Year-End
+"Billboard" Year-End charts are a cumulative measure of a single or album's performance in the United States, based upon the "Billboard" magazine charts during any given chart year. "Billboard's" "chart year" runs from the first Billboard "week" of December to the final week in November, but because the Billboard week is dated in advance of publication, the last calendar week for which sales are counted is usually the third w
+
+...(truncated)
+
+United States the film has sometimes been sold under the title Ivan Vasilievich: Back to the Future. This film is based on the play "" by Mikhail Bulgakov and was one of the most attended movies in the Soviet Union in 1973 with more than 60 million tickets sold.
+
+Document 33:
+2012 San Diego State Aztecs football team
+The 2012 San Diego State Aztecs football team represented San Diego State University in the 2012 NCAA Division I FBS football season. The Aztecs were led by second-year head coach Rocky Long and played their home games at Qualcomm Stadium. This was San Diego State's 14th season in the Mountain West Conference.
+
+Document 34:
+DART Light Rail
+DART Light Rail is a light rail system in Dallas, Texas and its suburbs owned and operated by Dallas Area Rapid Transit. The system comprises 93 mi among its four lines — the Red Line , the Blue Line , the Green Line , and the Orange Line . It is the longest light rail system in the United States. As
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Kiss and Tell is a 1945 American comedy film starring then 17-year-old Shirley Temple as Corliss Archer. The section also states that the post of Lord High Treasurer or Lord Treasurer was an English government position and has been a British government position since the Acts of Union of 1707. Therefore, the woman who portrayed Corliss Archer in the film Kiss and Tell, Shirley Temple, has held the government position of Lord High Treasurer.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Kiss and Tell is a 1945 American comedy film starring then 17-year-old Shirley Temple as Corliss Archer. The section also states that the post of Lord High Treasurer or Lord Treasurer was an English government position and has been a British government position since the Acts of Union of 1707. Therefore, the woman who portrayed Corliss Archer in the fil
+
+...(truncated)
+
+lub, Enfield and Haringey Athletic Club, Wood Green Weightlifting Club, Hashtag United F.C. (YouTube based football club), Haringey Rhinos rugby union club, Haringey Cycling Club, and the Next Level Football League.
+
+Document 69:
+New Japan Pro Wrestling World
+New Japan Pro Wrestling World (NJPW World) is a subscription-based video streaming service owned by New Japan Pro-Wrestling. On December 1, 2014, NJPW and TV Asahi announced "New Japan Pro Wrestling World", a new worldwide streaming site for the promotion's events. All major NJPW events air live on the service, which also features matches from the promotion's archives, dating back to 1972. In 2015, King of Pro-Wrestling marked the first ever event on NJPW World to feature English commentary, provided by Kevin Kelly and Matt Striker. Currently, English commentary is provided by Kelly and Don Callis. As part of a working relationship between NJPW and the Mexican Consejo Mundial de Lucha Libre (C
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Kiss and Tell is a 1945 American comedy film starring then 17-year-old Shirley Temple as Corliss Archer. The section also states that the post of Lord High Treasurer or Lord Treasurer was an English government position and has been a British government position since the Acts of Union of 1707. Therefore, the woman who portrayed Corliss Archer in the film Kiss and Tell, Shirley Temple, has held the government position of Lord High Treasurer. The section also mentions that A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale. It stars Shirley Temple in her final starring role as well as her final film appearance. This confirms that Shirley Temple, who portrayed Corliss Archer in Kiss and Tell, has also starred in A Kiss for Corliss, which is a related film.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Kiss and Tell is a 1945 American comedy film starring then 17-year-old Shirley Temple as Corliss Archer. The section also states that the post of Lord High Treasurer or Lord Treasurer was an English government position and has been a British government position since the Acts of Union of 1707. Therefore, the woman who portrayed Corliss Archer in the fil
+
+...(truncated)
+
+ne" magazine.
+
+Document 99:
+Sunny Leone
+Karenjit Kaur Vohra (born May 13, 1981), known by her stage name Sunny Leone (pronounced ), is a Canadian-born Indian-American actress and model, currently active in Indian film industry. She is a former pornstar. She has an American citizenship. She has also used the stage name Karen Malhotra.
+
+Document 100:
+Pierre Monteux
+Pierre Benjamin Monteux (] ; 4 April 18751 July 1964) was a French (later American) conductor. After violin and viola studies, and a decade as an orchestral player and occasional conductor, he began to receive regular conducting engagements in 1907. He came to prominence when, for Sergei Diaghilev's Ballets Russes company between 1911 and 1914, he conducted the world premieres of Stravinsky's "The Rite of Spring" and other prominent works including "Petrushka", Ravel's "Daphnis et Chloé", and Debussy's "Jeux". Thereafter he directed orchestras around the world for more than half a century.
+</section>
+
+Updated memory:
+
+assistant:
+  1%|          | 1/128 [12:04<25:33:45, 724.61s/it]  2%|▏         | 2/128 [12:07<10:30:09, 300.07s/it]  3%|▎         | 4/128 [12:13<3:55:01, 113.72s/it]   4%|▍         | 5/128 [12:13<2:41:08, 78.61s/it]   5%|▌         | 7/128 [12:13<1:24:13, 41.76s/it]  7%|▋         | 9/128 [12:14<49:54, 25.16s/it]    9%|▊         | 11/128 [12:14<31:13, 16.01s/it]  9%|▉         | 12/128 [12:15<24:55, 12.89s/it] 12%|█▏        | 15/128 [12:15<12:56,  6.87s/it] 16%|█▌        | 20/128 [12:15<05:52,  3.27s/it] 17%|█▋        | 22/128 [12:15<04:27,  2.53s/it] 19%|█▉        | 24/128 [12:16<03:25,  1.97s/it] 20%|██        | 26/128 [12:16<02:30,  1.47s/it] 22%|██▏       | 28/128 [12:16<01:48,  1.09s/it] 24%|██▍       | 31/128 [12:16<01:08,  1.41it/s] 26%|██▌       | 33/128 [12:17<00:51,  1.86it/s] 27%|██▋       | 35/128 [12:17<00:38,  2.40it/s] 32%|███▏      | 41/128 [12:17<00:18,  4.60it/s] 36%|███▌      | 46/128 [12:17<00:12,  6.73it/s] 38%|███▊      | 48/128 [12:17<00:10,  7.54it/s] 39%|███▉      | 50/128 [12:17<00:09,  8.48it/s] 41%|████      | 52/128 [12:18<00:08,  9.09it/s] 44%|████▍     | 56/128 [12:18<00:06, 11.45it/s] 46%|████▌     | 59/128 [12:18<00:05, 13.65it/s] 48%|████▊     | 61/128 [12:18<00:05, 12.93it/s] 49%|████▉     | 63/128 [12:18<00:04, 13.80it/s] 51%|█████     | 65/128 [12:18<00:04, 13.14it/s] 55%|█████▍    | 70/128 [12:19<00:03, 17.03it/s] 57%|█████▋    | 73/128 [12:19<00:03, 15.58it/s] 59%|█████▊    | 75/128 [12:19<00:03, 16.30it/s] 60%|██████    | 77/128 [12:19<00:03, 14.80it/s] 62%|██████▏   | 79/128 [12:19<00:03, 15.31it/s] 63%|██████▎   | 81/128 [12:19<00:02, 15.97it/s] 65%|██████▍   | 83/128 [12:20<00:03, 12.00it/s] 66%|██████▋   | 85/128 [12:20<00:03, 13.07it/s] 68%|██████▊   | 87/128 [12:20<00:02, 14.38it/s] 70%|██████▉   | 89/128 [12:20<00:03, 11.16it/s] 71%|███████   | 91/128 [12:21<00:04,  8.15it/s] 73%|███████▎  | 93/128 [12:21<00:04,  7.83it/s] 73%|███████▎  | 94/128 [12:21<00:04,  7.70it/s] 74%|███████▍  | 95/128 [12:21<00:04,  7.25it/s] 77%|███████▋  | 98/128 [12:21<00:03,  9.54it/s] 78%|███████▊  | 100/128 [12:22<00:04,  6.51it/s] 80%|███████▉  | 102/128 [12:22<00:03,  8.19it/s] 81%|████████▏ | 104/128 [12:22<00:03,  7.05it/s] 82%|████████▏ | 105/128 [12:23<00:03,  6.53it/s] 83%|████████▎ | 106/128 [12:23<00:03,  6.50it/s] 84%|████████▍ | 108/128 [12:23<00:02,  8.07it/s] 85%|████████▌ | 109/128 [12:23<00:02,  7.13it/s] 87%|████████▋ | 111/128 [12:24<00:04,  3.65it/s] 88%|████████▊ | 112/128 [12:26<00:10,  1.47it/s] 88%|████████▊ | 113/128 [12:27<00:10,  1.47it/s] 89%|████████▉ | 114/128 [12:27<00:08,  1.63it/s] 90%|████████▉ | 115/128 [12:29<00:09,  1.30it/s] 91%|█████████ | 116/128 [12:29<00:08,  1.34it/s] 91%|█████████▏| 117/128 [12:30<00:07,  1.42it/s] 92%|█████████▏| 118/128 [12:31<00:08,  1.17it/s] 93%|█████████▎| 119/128 [12:32<00:07,  1.27it/s] 94%|█████████▍| 120/128 [12:32<00:05,  1.45it/s] 95%|█████████▍| 121/128 [12:33<00:04,  1.43it/s] 95%|█████████▌| 122/128 [12:33<00:03,  1.77it/s] 96%|█████████▌| 123/128 [12:34<00:02,  1.83it/s] 97%|█████████▋| 124/128 [12:34<00:02,  1.83it/s] 98%|█████████▊| 125/128 [12:36<00:02,  1.24it/s] 98%|█████████▊| 126/128 [12:37<00:01,  1.11it/s] 99%|█████████▉| 127/128 [12:38<00:00,  1.11it/s]100%|██████████| 128/128 [12:38<00:00,  1.11it/s]100%|██████████| 128/128 [12:38<00:00,  5.93s/it]
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Kiss and Tell is a 1945 American comedy film starring then 17-year-old Shirley Temple as Corliss Archer. The section also states that the post of Lord High Treasurer or Lord Treasurer was an English government position and has been a British government position since the Acts of Union of 1707. Therefore, the woman who portrayed Corliss Archer in the film Kiss and Tell, Shirley Temple, has held the government position of Lord High Treasurer. The section also mentions that A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale. It stars Shirley Temple in her final starring role as well as her final film appearance. This confirms that Shirley Temple, who portrayed Corliss Archer in Kiss and Tell, has also starred in A Kiss for Corliss, which is a related film. The section also mentions that Janet Marie Waldo (February 4, 1920 – June 12, 2016) was an American radio and voice actress. She is best known in animation for voicing Judy Jetson, Nancy in "Shazzan", Penelope Pitstop, and Josie in "Josie and the Pussycats", and on radio as the title character in "Meet Corliss Archer". This confirms that Janet Waldo, who voiced Corliss Archer in the radio series "Meet Corliss Archer", has also portrayed Corliss Archer in the film Kiss and Tell. However, the section does not provide any information about a specific government position held by Shirley Temple.
+user:
+You are presented with a problem and a previous memory. Please answer the problem based on the previous memory and format your response as follows "Therefore, the answer is (insert answer here)".
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Kiss and Tell is a 1945 American comedy film starring then 17-year-old Shirley Temple as Corliss Archer. The section also states that the post of Lord High Treasurer or Lord Treasurer was an English government position and has been a British government position since the Acts of Union of 1707. Therefore, the woman who portrayed Corliss Archer in the film Kiss and Tell, Shirley Temple, has held the government position of Lord High Treasurer. The section also mentions that A Kiss for Corliss is a 1949 American comedy film directed by Richard Wallace and written by Howard Dimsdale. It stars Shirley Temple in her final starring role as well as her final film appearance. This confirms that Shirley Temple, who portrayed Corliss Archer in Kiss and Tell, has also starred in A Kiss for Corliss, which is a related film. The section also mentions that Janet Marie Waldo (February 4, 1920 – June 12, 2016) was an American radio and voice actress. She is best known in animation for voicing Judy Jetson, Nancy in "Shazzan", Penelope Pitstop, and Josie in "Josie and the Pussycats", and on radio as the title character in "Meet Corliss Archer". This confirms that Janet Waldo, who voiced Corliss Archer in the radio series "Meet Corliss Archer", has also portrayed Corliss Archer in the film Kiss and Tell. However, the section does not provide any information about a specific government position held by Shirley Temple.
+</memory>
+
+Your answer:
+
+assistant:
+Therefore, the answer is Lord High Treasurer.
+Time taken: 758.9673969745636 seconds
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 4415.06it/s]
+Time taken: 0.0010004043579101562 seconds
+========================================New Item Start========================================
+Therefore, the answer is Lord High Treasurer.
+--------------------------------------------------------------------------------
+Lord High Treasurer
+--------------------------------------------------------------------------------
+Chief of Protocol
+--------------------------------------------------------------------------------
+0.0
+========================================New Item End========================================
+ruler_hqa [100]
+f1: 74.8
+em: 60.94
+sub_em: 79.69
+Total: 128
+
+real	12m44.026s
+user	0m24.991s
+sys	0m3.124s

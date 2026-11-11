@@ -23,7 +23,11 @@ NYU Shanghai DATS-SHU-200 Data Mining（Prof. Qiaoyu Tan）期末项目 HW3 的�
 | `run_all.sh` | 第 5–6 步一键脚本：A → C → B，补跑缺题，汇总、打包 |
 | `requirements-lock.txt` | 锁定依赖（vLLM 0.8.2 发布当天的 140 个包，Linux x86_64 / Python 3.12） |
 | `third_party/MemAgent` | 作者代码，git submodule，固定在 `ef4219b` |
-| `results/` | 每次运行一个目录 `results/<日期>_<组>_<说明>/`：结果 jsonl、汇总表、manifest |
+| `scripts/server/` | 在服务器上跑的脚本：第 1–4 步、启动服务和等待就绪、单次评测、汇总、采集环境、导出 manifest |
+| `scripts/local/verify_results.py` | 在本地核对 `results/`：行数、`_id`、sha256，并重新计分 |
+| `results/` | 每次运行一个目录 `results/<日期>_<组>_<说明>/`：结果 jsonl、汇总表、manifest、评测日志；索引和总表见 [`results/README.md`](results/README.md) |
+| `docs/data_stats.md` | 各长度的 token 数和每题调用次数，C 组 `--max-model-len` 的算法 |
+| `docs/repro_notes.md` | 与手册的出入和事件记录（V1 引擎起不来改用 V0、耗时等） |
 | `docs/AI_USAGE.md` | AI 使用记录（课程要求） |
 | `CHANGELOG.md` | 版本记录 |
 
@@ -33,25 +37,36 @@ NYU Shanghai DATS-SHU-200 Data Mining（Prof. Qiaoyu Tan）期末项目 HW3 的�
 git clone --recursive https://github.com/Issac-Shi/memagent-reproduction.git
 ```
 
-然后按 [RUNBOOK.md](RUNBOOK.md) 第 0–6 步在一张 24G 显卡（CUDA ≥ 12.4）上运行：装锁定依赖 → 下载代码、模型、数据 → 建 YaRN 128K 目录并统计长度 → A 组 7K 试跑 → `run_all.sh` 跑完三组并汇总。GPU 时间约 4.5 小时。
+然后按 [RUNBOOK.md](RUNBOOK.md) 第 0–6 步在一张 24G 显卡（CUDA ≥ 12.4）上运行：装锁定依赖 → 下载代码、模型、数据 → 建 YaRN 128K 目录并统计长度 → A 组 7K 试跑 → `run_all.sh` 跑完三组并汇总。`scripts/server/` 里是这些步骤实际用的脚本。在 RTX 4090 上，vLLM 0.8.2 要用 V0 引擎（`VLLM_USE_V1=0`），原因见 [`docs/repro_notes.md`](docs/repro_notes.md)。实测 `run_all.sh` 用了 3.4 小时 GPU 时间，从装环境到关机约 4.4 小时。
 
 ## 当前结果
 
-复现尚未完成。结果出来后填在这里，单位是 sub_em 准确率（%）。
+2026-11-12 在单张 RTX 4090 上跑完保险版范围，单位是 sub_em 准确率（%），每格 128 题。按 RUNBOOK 的三条标准判断，**复现成功**：
+
+- A 组每个长度都在参考值上下 3 个点以内，7K 到 56K 没有下降；
+- A 组比 C 组高 25–27 个点；
+- A 组高于 B 组，B 组随长度下降。
+
+严格计分、逐条判断、耗时和花费见 [`results/README.md`](results/README.md)。
 
 | 组 | 来源 | 7K | 14K | 28K | 56K |
-| --- | --- | --- | --- | --- | --- |
+| --- | --- | ---: | ---: | ---: | ---: |
 | A RL-MemAgent-7B | v1 表 2 | 82.03 | 79.69 | 78.91 | 77.34 |
-| A RL-MemAgent-7B | 我们 |  |  |  |  |
+| A RL-MemAgent-7B | ICLR 表 1 | 81.25 | 81.25 | 82.03 | 80.47 |
+| A RL-MemAgent-7B | PI-Mem 独立重跑 | 81.25 | 81.25 | 75.00 | 82.81 |
+| **A RL-MemAgent-7B** | **我们** | **78.91** | **79.69** | **75.78** | **78.91** |
 | C Qwen2.5-7B 直接读 | ICLR 表 1 | 52.34 | 57.03 | 51.56 | 44.53 |
-| C Qwen2.5-7B 直接读 | 我们 |  |  |  | — |
+| **C Qwen2.5-7B 直接读** | **我们** | **53.12** | **54.69** | **48.44** | — |
 | B Qwen2.5-7B 记忆流程、无强化学习 | v1 图 5 | 59.38 | 52.34 | 51.56 | 47.66 |
-| B Qwen2.5-7B 记忆流程、无强化学习 | 我们 |  |  |  |  |
+| **B Qwen2.5-7B 记忆流程、无强化学习** | **我们** | **57.81** | **53.91** | **53.12** | **50.00** |
+
+C 组 56K 不在保险版范围内。
 
 ## 版本
 
 | 版本 | 日期 | 内容 |
 | --- | --- | --- |
+| v0.2.0 | 2026-11-12 | 基线复现完成：A / B / C 三组结果、manifest、核对脚本、结果对照表 |
 | v0.1.0 | 2026-11-12 | 交接包、维护规则、仓库骨架 |
 
 完整记录见 [CHANGELOG.md](CHANGELOG.md)。

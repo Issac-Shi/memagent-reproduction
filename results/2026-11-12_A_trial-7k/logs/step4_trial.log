@@ -1,0 +1,26 @@
+[2026-11-12 02:13:19] ==== 4.1 确认 GPU ====
+name, memory.total [MiB], memory.used [MiB], driver_version
+NVIDIA GeForce RTX 4090, 24564 MiB, 1 MiB, 595.71.05
+True NVIDIA GeForce RTX 4090
+[2026-11-12 02:13:21] ==== 4.2 启动 A 组服务 ====
+[2026-11-12 02:13:21] 已启动 A 组服务 BytedTsinghua-SIA/RL-MemoryAgent-7B（PID 5557）
+[2026-11-12 02:14:01] 服务就绪：BytedTsinghua-SIA/RL-MemoryAgent-7B（等了 40s）
+{"object":"list","data":[{"id":"BytedTsinghua-SIA/RL-MemoryAgent-7B","object":"model","created":1794420841,"owned_by":"vllm","root":"/root/autodl-tmp/models/RL-MemoryAgent-7B","parent":null,"max_model_len":32768,"permission":[{"id":"modelperm-36b27d64dc61480196fc9e7e539e6916","object":"model_permission","created":1794420841,"allow_create_engine":false,"allow_sampling":true,"allow_logprobs":true,"allow_search_indices":false,"allow_view":true,"allow_fine_tuning":false,"organization":"*","group":null,"is_blocking":false}]}]}
+-- 引擎（写进报告）
+INFO 11-12 02:13:31 [api_server.py:241] Started engine process with PID 5708
+INFO 11-12 02:13:35 [llm_engine.py:241] Initializing a V0 LLM engine (v0.8.2) with config: model='/root/autodl-tmp/models/RL-MemoryAgent-7B', speculative_config=None, tokenizer='/root/autodl-tmp/models/RL-MemoryAgent-7B', skip_tokenizer_init=False, tokenizer_mode=auto, revision=None, override_neuron_config=None, tokenizer_revision=None, trust_remote_code=False, dtype=torch.bfloat16, max_seq_len=32768, download_dir=None, load_format=LoadFormat.AUTO, tensor_parallel_size=1, pipeline_parallel_size=1, disable_custom_all_reduce=False, quantization=None, enforce_eager=False, kv_cache_dtype=auto,  device_config=cuda, decoding_config=DecodingConfig(guided_decoding_backend='xgrammar', reasoning_backend=None), observability_config=ObservabilityConfig(show_hidden_metrics=False, otlp_traces_endpoint=None, collect_model_forward_time=False, collect_model_execute_time=False), seed=None, served_model_name=BytedTsinghua-SIA/RL-MemoryAgent-7B, num_scheduler_steps=1, multi_step_stream_outputs=True, enable_prefix_caching=None, chunked_prefill_enabled=False, use_async_output_proc=True, disable_mm_preprocessor_cache=False, mm_processor_kwargs=None, pooler_config=None, compilation_config={"splitting_ops":[],"compile_sizes":[],"cudagraph_capture_sizes":[256,248,240,232,224,216,208,200,192,184,176,168,160,152,144,136,128,120,112,104,96,88,80,72,64,56,48,40,32,24,16,8,4,2,1],"max_capture_size":256}, use_cached_outputs=True, 
+INFO 11-12 02:13:57 [llm_engine.py:447] init engine (profile, create kv cache, warmup model) took 17.59 seconds
+[2026-11-12 02:14:01] ==== 4.3 跑 7K ====
+em: 61.72
+sub_em: 78.91
+Total: 128
+
+real	5m40.082s
+user	0m15.625s
+sys	0m2.687s
+[2026-11-12 02:19:41] 结束 A_50：128 行
+[2026-11-12 02:19:41] ==== 4.4 检查 ====
+128 results/ruler_hqa_50/MemoryAgent-7B-5k-1k-infty.jsonl
+method  docs  n  sub_em  strict  no_answer
+MemoryAgent-7B-5k-1k-infty 50 128 78.91 72.66 0
+[2026-11-12 02:19:41] step4 trial done

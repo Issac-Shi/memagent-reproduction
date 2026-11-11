@@ -1,0 +1,26 @@
+method  docs  n  sub_em  strict  no_answer
+MemoryAgent-7B-5k-1k-infty 50 128 78.91 72.66 0
+MemoryAgent-7B-5k-1k-infty 100 128 79.69 71.09 0
+MemoryAgent-7B-5k-1k-infty 200 128 75.78 68.75 0
+MemoryAgent-7B-5k-1k-infty 400 128 78.91 70.31 0
+MemoryAgent-7B-boxed 50 128 78.91 67.97 0
+Qwen-7B-120k+10k 50 128 53.12 47.66 1
+Qwen-7B-120k+10k 100 128 54.69 46.09 3
+Qwen-7B-120k+10k 200 128 48.44 41.41 1
+Qwen-7B-5k-1k-infty 50 128 57.81 51.56 0
+Qwen-7B-5k-1k-infty 100 128 53.91 47.66 2
+Qwen-7B-5k-1k-infty 200 128 53.12 48.44 0
+Qwen-7B-5k-1k-infty 400 128 50.0 45.31 0
+/root/autodl-tmp/logs/A_100.log:real	12m44.026s
+/root/autodl-tmp/logs/A_200.log:Race Wars is a drag racing event in the movie "The Fast and the Furious", which describes the underground illegal racing scene in Los Angeles, California, that character Dominic Toretto (Vin Diesel) and his team invent. Race Wars is not mentioned again until they reference it in the seventh installment of the "Fast and Furious" franchise, "Furious 7". The event consists of drag races where racers compete for large amounts of cash or pink slips, while beautiful women dance around the cars and throughout the event. There is a real life event
+/root/autodl-tmp/logs/A_200.log:real	28m36.439s
+/root/autodl-tmp/logs/A_400.log:real	74m39.728s
+/root/autodl-tmp/logs/A_50.log:real	5m40.082s
+/root/autodl-tmp/logs/B_100.log:real	9m2.246s
+/root/autodl-tmp/logs/B_200.log:Race Wars is a drag racing event in the movie "The Fast and the Furious", which describes the underground illegal racing scene in Los Angeles, California, that character Dominic Toretto (Vin Diesel) and his team invent. Race Wars is not mentioned again until they reference it in the seventh installment of the "Fast and Furious" franchise, "Furious 7". The event consists of drag races where racers compete for large amounts of cash or pink slips, while beautiful women dance around the cars and throughout the event. There is a real life event
+/root/autodl-tmp/logs/B_200.log:real	18m13.632s
+/root/autodl-tmp/logs/B_400.log:real	38m52.821s
+/root/autodl-tmp/logs/B_50.log:real	4m3.900s
+/root/autodl-tmp/logs/C_100.log:real	4m19.426s
+/root/autodl-tmp/logs/C_200.log:real	9m54.689s
+/root/autodl-tmp/logs/C_50.log:real	2m0.116s

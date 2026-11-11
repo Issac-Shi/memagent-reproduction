@@ -1,0 +1,2 @@
+method  docs  n  sub_em  strict  no_answer
+MemoryAgent-7B-boxed 50 128 78.91 67.97 0

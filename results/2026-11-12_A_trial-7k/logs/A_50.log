@@ -1,0 +1,113 @@
+[2026-11-12 02:14:01] 开始 A_50：--model BytedTsinghua-SIA/RL-MemoryAgent-7B --api recurrent --length 50 --save_file MemoryAgent-7B-5k-1k-infty
+DATAROOT=/root/autodl-tmp/hotpotqa
+SERVE_HOST=127.0.0.1
+SERVE_PORT=8000
+VLLM_USE_V1=0
+{'DATAROOT': '/root/autodl-tmp/hotpotqa',
+ 'RECURRENT_CHUNK_SIZE': 5000,
+ 'RECURRENT_MAX_CONTEXT_LEN': 100000000000,
+ 'RECURRENT_MAX_NEW': 1024}
+Namespace(length=50, save_dir='results/ruler_hqa_50', save_file='MemoryAgent-7B-5k-1k-infty', model='BytedTsinghua-SIA/RL-MemoryAgent-7B', tokenizer='/root/autodl-tmp/models/RL-MemoryAgent-7B', n_proc=256, api='recurrent', sampling=1, force=False)
+Generating train split: 0 examples [00:00, ? examples/s]Generating train split: 128 examples [00:00, 806.28 examples/s]Generating train split: 128 examples [00:00, 804.26 examples/s]
+original data len 128
+sampling data len 128
+0
+127
+  0%|          | 0/128 [00:00<?, ?it/s]  1%|          | 1/128 [05:15<11:07:32, 315.37s/it]  2%|▏         | 3/128 [05:15<2:50:25, 81.81s/it]    4%|▍         | 5/128 [05:17<1:22:46, 40.38s/it]  7%|▋         | 9/128 [05:18<32:28, 16.38s/it]    9%|▊         | 11/128 [05:18<22:27, 11.52s/it] 10%|█         | 13/128 [05:18<15:30,  8.09s/it] 12%|█▎        | 16/128 [05:18<09:14,  4.95s/it] 15%|█▍        | 19/128 [05:18<05:52,  3.24s/it] 17%|█▋        | 22/128 [05:19<03:50,  2.17s/it] 19%|█▉        | 24/128 [05:19<02:53,  1.67s/it] 23%|██▎       | 29/128 [05:19<01:31,  1.08it/s] 25%|██▌       | 32/128 [05:19<01:04,  1.48it/s] 27%|██▋       | 35/128 [05:20<00:49,  1.89it/s] 29%|██▉       | 37/128 [05:20<00:39,  2.29it/s] 32%|███▏      | 41/128 [05:20<00:24,  3.50it/s] 39%|███▉      | 50/128 [05:21<00:12,  6.28it/s] 44%|████▍     | 56/128 [05:21<00:08,  8.62it/s] 48%|████▊     | 62/128 [05:21<00:05, 11.29it/s] 56%|█████▋    | 72/128 [05:22<00:03, 15.59it/s] 65%|██████▍   | 83/128 [05:22<00:02, 22.25it/s] 69%|██████▉   | 88/128 [05:22<00:01, 25.17it/s] 73%|███████▎  | 94/128 [05:22<00:01, 26.51it/s] 78%|███████▊  | 100/128 [05:22<00:00, 31.13it/s] 86%|████████▌ | 110/128 [05:22<00:00, 41.67it/s] 91%|█████████ | 116/128 [05:23<00:00, 15.45it/s] 95%|█████████▍| 121/128 [05:26<00:01,  6.44it/s] 97%|█████████▋| 124/128 [05:28<00:00,  4.14it/s] 99%|█████████▉| 127/128 [05:31<00:00,  2.39it/s]100%|██████████| 128/128 [05:33<00:00,  2.61s/it]
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+No previous memory
+</memory>
+
+<section>
+Document 1:
+Dying of the Light (film)
+Dying of the Light is a 2014 American psychological thriller film written and directed by Paul Schrader and starring Nicolas Cage, Anton Yelchin and Irène Jacob about a government agent who must track down and kill a terrorist before he loses his full memory from a disease. It was released theatrically and through VOD formats by Lionsgate on December 5, 2014. The film received extremely negative reviews, with controver
+
+...(truncated)
+
+he emerging mass market consumer for the first time. It was the first independently designed and built V8 engine produced by Ford for mass production, and it ranks as one of the company's most important developments. A fascination with ever-more-powerful engines was perhaps the most salient aspect of the American car and truck market for a half century, from 1923 until 1973. The Ford flathead V8 was perfectly in tune with the cultural moment of its introduction, leading the way into a future of which the Ford company was a principal architect. Thus it became a phenomenal success. The engine design, with various changes but no major ones, was installed in Ford passenger cars and trucks until 1953, making the engine's 21-year production run for the U.S. consumer market longer than the 19-year run of the Ford Model T engine for that market. The engine was on Ward's list of the 10 best engines of the 20th century. It was a staple of hot rodders in the 
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Janet Waldo, an American radio and voice actress, is best known in animation for voicing Judy Jetson, Nancy in "Shazzan", Penelope Pitstop, and Josie in "Josie and the Pussycats", and on radio as the title character in "Meet Corliss Archer". The section also mentions that Meet Corliss Archer is a program from radio's Golden Age, which ran from January 7, 1943 to September 30, 1956. However, there is no mention of a government position being held by the woman who portrayed Corliss Archer. The section does provide information about a British Government position, Secretary of State for Constitutional Affairs, but it does not relate to the woman who portrayed Corliss Archer. Therefore, the updated memory is that Janet Waldo voiced Corliss Archer, but there is no government position mentioned for her.
+user:
+You are presented with a problem, a section of an article that may contain the answer to the problem, and a previous memory. Please read the provided section carefully and update the memory with the new information that helps to answer the problem. Be sure to retain all relevant details from the previous memory while adding any new, useful information.
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Janet Waldo, an American radio and voice actress, is best known in animation for voicing Judy Jetson, Nancy in "Shazzan", Penelope Pitstop, and Josie in "Josie and the Pussycats", and on radio as the title character in "Meet Corliss Archer". The section also mentions that Meet Corliss Archer is a program from radio's Golden Age, which ran from January 7
+
+...(truncated)
+
+ey Temple as Corliss Archer. In the film, two teenage girls cause their respective parents much concern when they start to become interested in boys. The parents' bickering about which girl is the worse influence causes more problems than it solves.
+
+Document 49:
+Belle &amp; Sebastian: The Adventure Continues
+Belle & Sebastian: The Adventure Continues (original title: Belle et Sébastien, l'aventure continue) is a 2015 French adventure film. It is directed by Christian Duguay. The film is the sequel to the 2013 film "Belle and Sebastian".
+
+Document 50:
+Church of St Mary Major, Exeter
+The Church of St Mary Major, formerly Exeter Minster, was a historic church and parish in the City of Exeter, Devon, dating from the 7th century. It pre-dated the first Exeter Cathedral by some five centuries, was rebuilt several times, but was finally demolished in 1971. It was situated to the immediate south-west of Exeter Cathedral, the site today being a grass lawn.
+</section>
+
+Updated memory:
+
+assistant:
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Kiss and Tell is a 1945 American comedy film starring then 17-year-old Shirley Temple as Corliss Archer. The section also mentions that Shirley Temple Black (April 23, 1928 – February 10, 2014) was an American actress, singer, dancer, businesswoman, and diplomat who was Hollywood's number one box-office draw as a child actress from 1935 to 1938. As an adult, she was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States. Therefore, the government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell is United States ambassador.
+user:
+You are presented with a problem and a previous memory. Please answer the problem based on the previous memory and format your response as follows "Therefore, the answer is (insert answer here)".
+
+<problem> 
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+</problem>
+
+<memory>
+Updated memory:
+What government position was held by the woman who portrayed Corliss Archer in the film Kiss and Tell?
+The section mentions that Kiss and Tell is a 1945 American comedy film starring then 17-year-old Shirley Temple as Corliss Archer. The section also mentions that Shirley Temple Black (April 23, 1928 – February 10, 2014) was an American actress, singer, dancer, businesswoman, and diplomat who was Hollywood's number one box-office draw as a child actress from 1935 to 1938. As an adult, she was named United States ambassador to Ghana and to Czechoslovakia and also served as Chief of Protocol of the United States. Therefore, the government position held by the woman who portrayed Corliss Archer in the film Kiss and Tell is United States ambassador.
+</memory>
+
+Your answer:
+
+assistant:
+Therefore, the answer is United States ambassador.
+Time taken: 333.82294845581055 seconds
+  0%|          | 0/1 [00:00<?, ?it/s]100%|██████████| 1/1 [00:00<00:00, 4288.65it/s]
+Time taken: 0.0010831356048583984 seconds
+========================================New Item Start========================================
+Therefore, the answer is United States ambassador.
+--------------------------------------------------------------------------------
+United States ambassador
+--------------------------------------------------------------------------------
+Chief of Protocol
+--------------------------------------------------------------------------------
+0.0
+========================================New Item End========================================
+ruler_hqa [50]
+f1: 75.95
+em: 61.72
+sub_em: 78.91
+Total: 128
+
+real	5m40.082s
+user	0m15.625s
+sys	0m2.687s
+[2026-11-12 02:19:41] 结束 A_50：128 行

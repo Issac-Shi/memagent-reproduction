@@ -1,0 +1,2 @@
+method  docs  n  sub_em  strict  no_answer
+MemoryAgent-7B-5k-1k-infty 50 128 78.91 72.66 0

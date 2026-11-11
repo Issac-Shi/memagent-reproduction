@@ -15,6 +15,10 @@ A_LENS="50 100 200 400"     # 想加 112K：末尾加 800（约多 1.5 小时）
 B_LENS="50 100 200 400"     # 同上
 C_LENS="50 100 200"         # 加 400 需要更大的 C_MAXLEN，24G 卡显存很紧，不建议
 
+# vLLM 引擎：在 24G 卡上，V1 引擎用默认参数起不来（profile 后 KV cache 只剩 0.85 GiB，
+# 不够一条 32768 长度的请求所需的 1.75 GiB），所以按 RUNBOOK 4.5 用 V0 引擎。其余参数仍全部默认。
+export VLLM_USE_V1=${VLLM_USE_V1:-0}
+
 # ================= 一般不用改 =================
 ROOT=${ROOT:-/root/autodl-tmp}
 M=$ROOT/models

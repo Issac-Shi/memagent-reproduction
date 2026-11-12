@@ -12,4 +12,4 @@
 - **Running**: setting up the environment, running the evaluations over SSH, and diagnosing problems such as the vLLM engine failing to start.
 - **Checking**: verifying that every result file is complete and recomputing all scores from the model outputs.
 
-All accuracy numbers in this repository are computed by scripts from the result files produced on the server.
+All accuracy numbers in this repository are computed by scripts from the result files produced on the server. All code and data in this repository have been manually reviewed and verified by the author.

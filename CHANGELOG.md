@@ -2,6 +2,13 @@
 
 One entry per merge into `main`, each with an annotated tag.
 
+## v0.2.6 — 2026-11-12
+
+- `README.md` and `results/README.md`: each finding is stated as a conclusion, followed by the groups it compares.
+- `results/README.md`: explains why our numbers differ slightly from the paper (sampling, sample size, an independent evaluation of the same checkpoint).
+- `docs/AI_USAGE.md`: states that all code and data were manually reviewed and verified.
+- Results are unchanged.
+
 ## v0.2.5 — 2026-11-12
 
 - `README.md`: the setup table explains how each group reads the document and its role; the scope and its reason are stated; each finding names the groups it compares; the latest version is highlighted.

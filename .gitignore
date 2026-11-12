@@ -36,9 +36,7 @@ known_hosts
 .ssh/
 secrets/
 
-# ---- Internal documents (kept locally only) ----
+# ---- Internal documents and local tool settings (kept locally only) ----
 CLAUDE.md
 RUNBOOK.md
-
-# ---- Local Claude Code settings ----
 .claude/

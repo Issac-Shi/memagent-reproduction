@@ -1,6 +1,6 @@
 # MemAgent Reproduction
 
-Final project for DATS-SHU-200 Data Mining (NYU Shanghai, Prof. Qiaoyu Tan).
+Final project for DATS-SHU-200 Data Mining.
 
 We reproduce the main long-context QA result of **MemAgent** ([arXiv v1](https://arxiv.org/abs/2507.02259v1), ICLR 2026 Oral) with the released [RL-MemoryAgent-7B](https://huggingface.co/BytedTsinghua-SIA/RL-MemoryAgent-7B) weights. MemAgent reads a long document in 5K-token chunks. After each chunk it overwrites a fixed 1K-token memory, and it answers from the memory alone. The memory-update policy is trained with reinforcement learning (RL).
 

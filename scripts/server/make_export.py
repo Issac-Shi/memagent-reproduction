@@ -1,8 +1,8 @@
-# 把服务器上的结果整理成仓库的 results/<日期>_<组>_<说明>/ 结构，每个目录带 manifest.json 和 summary.txt。
-# 在服务器上运行（要导入作者的 utils，所以在 memory_eval 目录下）：
+# Build the repository's results/<date>_<group>_<description>/ directories from the server's results and logs,
+# each with manifest.json and summary.txt. Run on the server from memory_eval (it imports the authors' utils):
 #   cd /root/autodl-tmp/MemAgent/taskutils/memory_eval
-#   python /root/autodl-tmp/scripts/make_export.py <试跑时本仓库 commit> <boxed 时 commit> <run_all 时 commit>
-# 输出到 /root/autodl-tmp/export/results/，不改动原始结果和日志。
+#   python /root/autodl-tmp/scripts/make_export.py <our commit: 7K run> <our commit: boxed check> <our commit: run_all>
+# Writes to /root/autodl-tmp/export/results/; the original results and logs are not modified.
 import datetime, glob, hashlib, json, os, re, shutil, sys
 
 sys.path.insert(0, os.getcwd())
@@ -13,11 +13,25 @@ LOGS = f'{ROOT}/logs'
 EVAL = f'{ROOT}/MemAgent/taskutils/memory_eval'
 OUT = f'{ROOT}/export/results'
 REPO = 'https://github.com/Issac-Shi/memagent-reproduction'
-PRICE = 2.0          # ¥/GPU 小时，RUNBOOK 的假设；实际以 AutoDL 账单为准
+PRICE = 2.0          # assumed price, ¥ per GPU-hour
+PRICE_NOTE = 'Evaluation time only, at an assumed price of ¥2 per GPU-hour.'
 TZ = '+08:00'
 commit_trial, commit_boxed, commit_runall = sys.argv[1:4]
 env_info = json.load(open(f'{LOGS}/env_info.json'))
 M = f'{ROOT}/models'
+
+# Log markers. The 2026-11-12 logs were written by an earlier version of the scripts with Chinese messages;
+# both forms are accepted.
+EVAL_START_END = r'^\[(\d{4}-\d\d-\d\d \d\d:\d\d:\d\d)\] (开始|结束|start|end) '
+
+
+def server_start(g, msg):
+    return msg.startswith((f'启动 {g} 组服务', f'Starting group {g} server'))
+
+
+def eval_done(g, msg):
+    return re.match(fr'({g} 组 eval_\d+ 完成|Group {g} eval_\d+ done)', msg) is not None
+
 
 GROUPS = {
     'A': dict(model_dir=f'{M}/RL-MemoryAgent-7B', name='BytedTsinghua-SIA/RL-MemoryAgent-7B',
@@ -52,7 +66,7 @@ def score(path):
 
 
 def real_seconds(log):
-    """一个评测日志里所有 time 的 real 之和（补跑时有多次）。"""
+    """Sum of all `time` real values in an evaluation log (several if a length was re-run)."""
     tot = 0.0
     for m in re.finditer(r'^real\s+(\d+)m([\d.]+)s', open(log, errors='replace').read(), re.M):
         tot += int(m.group(1)) * 60 + float(m.group(2))
@@ -60,8 +74,8 @@ def real_seconds(log):
 
 
 def evallog_span(log):
-    """run_eval.sh 写的 [YYYY-MM-DD HH:MM:SS] 开始 / 结束 时间。"""
-    ts = re.findall(r'^\[(\d{4}-\d\d-\d\d \d\d:\d\d:\d\d)\] (开始|结束)', open(log, errors='replace').read(), re.M)
+    """First start and last end time written by run_eval.sh."""
+    ts = re.findall(EVAL_START_END, open(log, errors='replace').read(), re.M)
     return ts[0][0], ts[-1][0]
 
 
@@ -132,7 +146,7 @@ def environment():
     return dict(vllm=env_info['vllm'], torch=env_info['torch'], transformers=env_info['transformers'],
                 openai=env_info['openai'], python=env_info['python'], gpu=env_info['gpu'],
                 cuda_driver=env_info['cuda_driver'], vllm_engine='V0 (VLLM_USE_V1=0)',
-                host='AutoDL 单卡实例（GPU 模式）')
+                host='AutoDL single-GPU instance')
 
 
 def manifest(run_dir, **kw):
@@ -145,7 +159,7 @@ def manifest(run_dir, **kw):
 shutil.rmtree(f'{ROOT}/export', ignore_errors=True)
 os.makedirs(OUT)
 
-# ---------- 1. A 组 7K 试跑（RUNBOOK 第 4 步）----------
+# ---------- 1. Group A at 7K (step 4) ----------
 rid = '2026-11-12_A_trial-7k'
 d = f'{OUT}/{rid}'
 os.makedirs(d)
@@ -155,20 +169,20 @@ logs = copy_logs(d, [('A_50.log', 'A_50.log'), ('step4_trial.log', 'step4_trial.
                      ('step4_trial_v1_failed.log', 'step4_trial_v1_failed.log'),
                      ('serve_A_v1_failed.log', 'vllm_v1_startup_failure.log')])
 write_summary(d, {f: s})
-manifest(d, run_id=rid, group='A', description='RUNBOOK 第 4 步：A 组（RL-MemoryAgent-7B，分段读 + 记忆）7K 试跑',
+manifest(d, run_id=rid, group='A', description='Step 4: group A (RL-MemoryAgent-7B, memory workflow) at 7K',
          our_repo=dict(url=REPO, branch='repro/baseline', commit=commit_trial),
          commands=dict(cwd='MemAgent/taskutils/memory_eval', server=serve_cmd('A'), eval=[eval_cmd('A', 50)]),
          env=eval_env('recurrent'),
          start=iso(st), end=iso(en), eval_seconds={'50': real_seconds(f'{LOGS}/A_50.log')},
          cost=dict(gpu_hours=round(hours(st, en), 3), price_cny_per_hour=PRICE,
-                   estimate_cny=round(hours(st, en) * PRICE, 2),
-                   note='只算评测时长；价格是 RUNBOOK 的假设（4090 约 ¥2/小时），实际以 AutoDL 账单为准'),
+                   estimate_cny=round(hours(st, en) * PRICE, 2), note=PRICE_NOTE),
          results={f: s}, logs=logs,
-         notes=['先用 V1 引擎（vLLM 0.8.2 默认）启动失败：KV cache 只剩 0.85 GiB < 1.75 GiB，'
-                '见 logs/vllm_v1_startup_failure.log 和 docs/repro_notes.md；按 RUNBOOK 4.5 改用 V0 引擎，其余参数全默认。',
-                '通过标准：128 行、sub_em 在 78–84、抓不到答案的题个位数，三条都满足。'])
+         notes=['The default vLLM V1 engine failed to start: only 0.85 GiB was left for the KV cache, and one request '
+                'needs 1.75 GiB (see logs/vllm_v1_startup_failure.log and docs/repro_notes.md). The run used the '
+                'V0 engine with all other parameters at their defaults.',
+                'Check passed: 128 results, sub_em within 78-84, fewer than 10 questions without an extracted answer.'])
 
-# ---------- 2. \boxed{} 对照（RUNBOOK 4.5）----------
+# ---------- 2. \boxed{} answer-format check ----------
 rid = '2026-11-12_A_boxed-7k'
 d = f'{OUT}/{rid}'
 os.makedirs(d)
@@ -176,17 +190,18 @@ f, s = copy_result(d, 50, 'MemoryAgent-7B-boxed')
 st, en = evallog_span(f'{LOGS}/Aboxed_50.log')
 logs = copy_logs(d, [('Aboxed_50.log', 'Aboxed_50.log'), ('step4_boxed.log', 'step4_boxed.log')])
 write_summary(d, {f: s})
-manifest(d, run_id=rid, group='A', description='RUNBOOK 4.5：A 组 7K 用 \\boxed{} 作答格式（--api recurrent-boxed）的对照',
+manifest(d, run_id=rid, group='A',
+         description='Answer-format check: group A at 7K with the \\boxed{} format (--api recurrent-boxed)',
          our_repo=dict(url=REPO, branch='repro/baseline', commit=commit_boxed),
-         commands=dict(cwd='MemAgent/taskutils/memory_eval', server=serve_cmd('A') + '（沿用试跑的服务）',
+         commands=dict(cwd='MemAgent/taskutils/memory_eval', server=serve_cmd('A') + ' (same server as the 7K run)',
                        eval=[eval_cmd('A', 50, api='recurrent-boxed', save='MemoryAgent-7B-boxed')]),
          env=eval_env('recurrent-boxed'),
          start=iso(st), end=iso(en), eval_seconds={'50': real_seconds(f'{LOGS}/Aboxed_50.log')},
          cost=dict(gpu_hours=round(hours(st, en), 3), price_cny_per_hour=PRICE,
-                   estimate_cny=round(hours(st, en) * PRICE, 2), note='同上'),
+                   estimate_cny=round(hours(st, en) * PRICE, 2), note=PRICE_NOTE),
          results={f: s}, logs=logs)
 
-# ---------- 3. run_all：A 14K–56K → C 7K–28K → B 7K–56K（RUNBOOK 第 5–6 步）----------
+# ---------- 3. run_all: A 14K-56K -> C 7K-28K -> B 7K-56K ----------
 rid = '2026-11-12_ABC_run-all'
 d = f'{OUT}/{rid}'
 os.makedirs(d)
@@ -195,8 +210,8 @@ plan = dict(A=[100, 200, 400], C=[50, 100, 200], B=[50, 100, 200, 400])
 results, per_group, eval_secs = {}, {}, {}
 log_names = [('run_all.log', 'run_all.log'), ('summary.txt', 'run_all_summary.txt')]
 for g, lens in plan.items():
-    starts = [t for t, msg in lines if msg.startswith(f'启动 {g} 组服务')]
-    ends = [t for t, msg in lines if re.match(fr'{g} 组 eval_\d+ 完成', msg)]
+    starts = [t for t, msg in lines if server_start(g, msg)]
+    ends = [t for t, msg in lines if eval_done(g, msg)]
     for L in lens:
         p = f"{EVAL}/results/ruler_hqa_{L}/{GROUPS[g]['save']}.jsonl"
         if os.path.exists(p):
@@ -213,17 +228,19 @@ logs = copy_logs(d, log_names)
 write_summary(d, results)
 t0, t1 = lines[0][0], lines[-1][0]
 manifest(d, run_id=rid, group='ABC',
-         description='RUNBOOK 第 5–6 步：run_all.sh 按 A → C → B 依次换模型跑完保险版范围、补跑缺题、汇总',
+         description='run_all.sh: groups A -> C -> B at all lengths, re-running any length with missing results',
          our_repo=dict(url=REPO, branch='repro/baseline', commit=commit_runall),
          commands=dict(cwd='MemAgent/taskutils/memory_eval', launcher='bash /root/autodl-tmp/run_all.sh',
                        run_all_settings=dict(C_MAXLEN=42000, AUTO_SHUTDOWN=0, VLLM_USE_V1=0, MAX_TRIES=3)),
          groups=per_group,
          start=iso(t0), end=iso(t1), eval_seconds=eval_secs,
          cost=dict(gpu_hours=round(hours(t0, t1), 3), price_cny_per_hour=PRICE,
-                   estimate_cny=round(hours(t0, t1) * PRICE, 2), note='run_all.log 首尾时间；价格同上'),
+                   estimate_cny=round(hours(t0, t1) * PRICE, 2),
+                   note='From the first to the last line of run_all.log, at an assumed price of ¥2 per GPU-hour.'),
          results=results, logs=logs,
-         notes=['A 组 7K 沿用试跑结果（run_all 检查到已有 128 条直接跳过），见 2026-11-12_A_trial-7k。',
-                'logs/run_all_summary.txt 是 run_all 汇总服务器上全部结果文件的总表（含试跑和 boxed 对照）。'])
+         notes=['Group A at 7K is the result in 2026-11-12_A_trial-7k (run_all skips lengths that already have 128 results).',
+                'logs/run_all_summary.txt is the summary run_all wrote for all result files on the server, '
+                'including the 7K run and the \\boxed{} check.'])
 
 print('exported:', sorted(os.listdir(OUT)))
 for r in sorted(os.listdir(OUT)):

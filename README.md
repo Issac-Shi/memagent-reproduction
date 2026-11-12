@@ -66,12 +66,13 @@ bash /root/autodl-tmp/run_all.sh                  # groups A → C → B at all 
 | `run_all.sh` | Runs groups A → C → B |
 | `requirements-lock.txt` | Locked dependencies (Python 3.12, Linux x86_64) |
 | `third_party/MemAgent` | Authors' code (git submodule, pinned at `ef4219b`) |
-| `docs/` | Reproduction notes and test-data statistics |
+| `docs/` | [Reproduction notes](docs/repro_notes.md), [test-data statistics](docs/data_stats.md), [AI usage](docs/AI_USAGE.md) |
 
 ## Versions
 
 | Version | Date | Changes |
 | --- | --- | --- |
+| v0.2.2 | 2026-11-12 | Whole repository in English |
 | v0.2.1 | 2026-11-12 | README and results summary in English |
 | v0.2.0 | 2026-11-12 | Baseline reproduction results |
 | v0.1.0 | 2026-11-12 | Repository setup |

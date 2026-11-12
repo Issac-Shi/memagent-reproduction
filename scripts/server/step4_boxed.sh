@@ -1,6 +1,6 @@
 #!/usr/bin/env bash
-# RUNBOOK 4.5：\boxed{} 格式对照。A 组服务保持运行，同一条命令把 --api recurrent 换成 recurrent-boxed，
-# --save_file 改成 MemoryAgent-7B-boxed。在服务器后台运行：
+# Answer-format check: group A at 7K with the \boxed{} format (--api recurrent-boxed), reusing the
+# server started by step4_trial.sh. Run in the background on the server:
 #   nohup bash /root/autodl-tmp/scripts/step4_boxed.sh > /root/autodl-tmp/logs/step4_boxed.log 2>&1 &
 set -u
 S=/root/autodl-tmp/scripts

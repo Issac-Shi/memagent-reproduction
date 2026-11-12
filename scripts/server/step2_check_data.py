@@ -1,5 +1,5 @@
-# RUNBOOK 第 2 步的数据校验片段（原样）。通过标准：每个文件 128 条，
-# 字段为 answers / context / index / input / num_docs。
+# Step 2: check the test data. Expected: 128 items per file,
+# with fields answers / context / index / input / num_docs.
 import json
 def load(p):
     t = open(p).read()

@@ -1,5 +1,5 @@
-# RUNBOOK 第 3 步：统计每个长度的文档 token 数和每题调用次数（原样，末尾多打印 C_MAXLEN）。
-# C 组 --max-model-len = eval_200 的最大值 + 1,000（问题和模板）+ 10,000（预留输出），向上取整到千。
+# Step 3: document length in tokens and model calls per question for each test file; also prints C_MAXLEN.
+# Group C --max-model-len = longest eval_200 document + 1,000 (question and template) + 10,000 (output), rounded up to 1,000.
 import json, math
 from transformers import AutoTokenizer
 tok = AutoTokenizer.from_pretrained('/root/autodl-tmp/models/Qwen2.5-7B-Instruct')

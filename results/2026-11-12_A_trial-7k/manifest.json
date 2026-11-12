@@ -1,7 +1,7 @@
 {
   "run_id": "2026-11-12_A_trial-7k",
   "group": "A",
-  "description": "RUNBOOK 第 4 步：A 组（RL-MemoryAgent-7B，分段读 + 记忆）7K 试跑",
+  "description": "Step 4: group A (RL-MemoryAgent-7B, memory workflow) at 7K",
   "our_repo": {
     "url": "https://github.com/Issac-Shi/memagent-reproduction",
     "branch": "repro/baseline",
@@ -31,7 +31,7 @@
     "gpu_hours": 0.094,
     "price_cny_per_hour": 2.0,
     "estimate_cny": 0.19,
-    "note": "只算评测时长；价格是 RUNBOOK 的假设（4090 约 ¥2/小时），实际以 AutoDL 账单为准"
+    "note": "Evaluation time only, at an assumed price of ¥2 per GPU-hour."
   },
   "results": {
     "ruler_hqa_50/MemoryAgent-7B-5k-1k-infty.jsonl": {
@@ -49,8 +49,8 @@
     "logs/vllm_v1_startup_failure.log"
   ],
   "notes": [
-    "先用 V1 引擎（vLLM 0.8.2 默认）启动失败：KV cache 只剩 0.85 GiB < 1.75 GiB，见 logs/vllm_v1_startup_failure.log 和 docs/repro_notes.md；按 RUNBOOK 4.5 改用 V0 引擎，其余参数全默认。",
-    "通过标准：128 行、sub_em 在 78–84、抓不到答案的题个位数，三条都满足。"
+    "The default vLLM V1 engine failed to start: only 0.85 GiB was left for the KV cache, and one request needs 1.75 GiB (see logs/vllm_v1_startup_failure.log and docs/repro_notes.md). The run used the V0 engine with all other parameters at their defaults.",
+    "Check passed: 128 results, sub_em within 78-84, fewer than 10 questions without an extracted answer."
   ],
   "environment": {
     "vllm": "0.8.2",
@@ -61,7 +61,7 @@
     "gpu": "NVIDIA GeForce RTX 4090, 24564 MiB, 595.71.05, 8.9",
     "cuda_driver": "CUDA Version: 13.2",
     "vllm_engine": "V0 (VLLM_USE_V1=0)",
-    "host": "AutoDL 单卡实例（GPU 模式）"
+    "host": "AutoDL single-GPU instance"
   },
   "author_repo": {
     "url": "https://github.com/BytedTsinghua-SIA/MemAgent",

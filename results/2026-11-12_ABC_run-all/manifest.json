@@ -1,7 +1,7 @@
 {
   "run_id": "2026-11-12_ABC_run-all",
   "group": "ABC",
-  "description": "RUNBOOK 第 5–6 步：run_all.sh 按 A → C → B 依次换模型跑完保险版范围、补跑缺题、汇总",
+  "description": "run_all.sh: groups A -> C -> B at all lengths, re-running any length with missing results",
   "our_repo": {
     "url": "https://github.com/Issac-Shi/memagent-reproduction",
     "branch": "repro/baseline",
@@ -92,7 +92,7 @@
     "gpu_hours": 3.414,
     "price_cny_per_hour": 2.0,
     "estimate_cny": 6.83,
-    "note": "run_all.log 首尾时间；价格同上"
+    "note": "From the first to the last line of run_all.log, at an assumed price of ¥2 per GPU-hour."
   },
   "results": {
     "ruler_hqa_100/MemoryAgent-7B-5k-1k-infty.jsonl": {
@@ -181,8 +181,8 @@
     "logs/B_400.log"
   ],
   "notes": [
-    "A 组 7K 沿用试跑结果（run_all 检查到已有 128 条直接跳过），见 2026-11-12_A_trial-7k。",
-    "logs/run_all_summary.txt 是 run_all 汇总服务器上全部结果文件的总表（含试跑和 boxed 对照）。"
+    "Group A at 7K is the result in 2026-11-12_A_trial-7k (run_all skips lengths that already have 128 results).",
+    "logs/run_all_summary.txt is the summary run_all wrote for all result files on the server, including the 7K run and the \boxed{} check."
   ],
   "environment": {
     "vllm": "0.8.2",
@@ -193,7 +193,7 @@
     "gpu": "NVIDIA GeForce RTX 4090, 24564 MiB, 595.71.05, 8.9",
     "cuda_driver": "CUDA Version: 13.2",
     "vllm_engine": "V0 (VLLM_USE_V1=0)",
-    "host": "AutoDL 单卡实例（GPU 模式）"
+    "host": "AutoDL single-GPU instance"
   },
   "author_repo": {
     "url": "https://github.com/BytedTsinghua-SIA/MemAgent",

@@ -1,10 +1,10 @@
-# 在本地核对下载回来的 results/：每个 manifest 里列出的结果文件都要
-#   1) 存在，sha256 和 manifest 一致；
-#   2) 正好 128 行，_id 恰好是 0–127，没有重复或缺题；
-#   3) 重新计算的 sub_em / strict / no_answer 和 manifest、summary.txt 一致。
-# 计分口径与 RUNBOOK 第 6 步相同（normalize_answer 从作者代码的子模块导入，不改作者代码）。
-# 用法（仓库根目录）：python -I scripts/local/verify_results.py [results 目录，默认 results]
-# 全部通过退出码为 0，否则为 1。
+# Check every result file listed in each results/<run>/manifest.json:
+#   1) it exists and its SHA-256 matches the manifest;
+#   2) it has exactly 128 lines whose _id values are 0-127 (no duplicates, no missing questions);
+#   3) the recomputed sub_em / strict / no_answer match the manifest and summary.txt.
+# Scoring uses normalize_answer from the authors' code (git submodule, unmodified).
+# Usage (repository root): python -I scripts/local/verify_results.py [results dir, default results]
+# Exit code 0 if every file passes, 1 otherwise.
 import hashlib, json, os, sys
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -54,33 +54,33 @@ for run in sorted(os.listdir(root)):
         p = os.path.join(d, rel)
         tag = f'{run}/{rel}'
         if not os.path.isfile(p):
-            bad.append(f'{tag}: 文件不存在')
+            bad.append(f'{tag}: file not found')
             continue
         rows, s = score(p)
         ids = sorted(x['_id'] for x in rows)
         errs = []
         if sha256(p) != exp['sha256']:
-            errs.append('sha256 不一致')
+            errs.append('SHA-256 mismatch')
         if s['n'] != N:
-            errs.append(f"行数 {s['n']} ≠ {N}")
+            errs.append(f"{s['n']} lines, expected {N}")
         if ids != list(range(N)):
-            errs.append(f'_id 不是 0–{N - 1}（去重后 {len(set(ids))} 个）')
+            errs.append(f'_id values are not 0-{N - 1} ({len(set(ids))} unique)')
         for k in ('n', 'sub_em', 'strict', 'no_answer'):
             if s[k] != exp[k]:
-                errs.append(f'{k}: 重算 {s[k]} ≠ manifest {exp[k]}')
+                errs.append(f'{k}: recomputed {s[k]}, manifest {exp[k]}')
         name = os.path.basename(rel)[:-6]
         L = int(rel.split('/')[0].split('_')[-1])
         if summary and summary.get((name, L)) != (s['n'], s['sub_em'], s['strict'], s['no_answer']):
-            errs.append(f'summary.txt 不一致：{summary.get((name, L))}')
+            errs.append(f'summary.txt mismatch: {summary.get((name, L))}')
         checked += 1
         flag = 'OK ' if not errs else 'BAD'
         print(f"  {flag} {rel:55s} n={s['n']} sub_em={s['sub_em']:6.2f} strict={s['strict']:6.2f} no_answer={s['no_answer']}")
         bad += [f'{tag}: {e}' for e in errs]
 
-print(f'\n核对了 {checked} 个结果文件。')
+print(f'\nChecked {checked} result files.')
 if bad:
-    print('不通过：')
+    print('FAILED:')
     for b in bad:
         print('  ' + b)
     sys.exit(1)
-print('全部通过。')
+print('All passed.')

@@ -33,10 +33,10 @@ Accuracy (%) on 128 questions per cell.
 
 \* Fig. 5 shows this curve without numbers. The values are read from the figure's vector graphics.
 
-- **Ours vs. paper (A, B, C)**: every cell is within 3.13 points of the paper.
-- **A across lengths**: MemAgent does not degrade as documents get longer: 78.91 at 7K and 78.91 at 56K. B, which uses the same memory without RL, drops from 57.81 to 50.00.
-- **A vs. C**: reading with RL-trained memory beats reading the whole document at once by 25–27 points (7K–28K).
-- **A vs. B**: RL training of the memory adds 21–29 points (7K–56K).
+- **Our results match the paper** (ours vs. paper): every cell of A, B and C is within 3.13 points of the paper, a difference expected from sampling with 128 questions per cell ([details](results/README.md#comparison-with-the-paper)).
+- **MemAgent does not degrade with length** (A and B, 7K → 56K): A scores 78.91 at both 7K and 56K, while B, which uses the same memory without RL, drops from 57.81 to 50.00.
+- **Memory beats full-context reading** (A vs. C): A is 25–27 points above C at 7K–28K.
+- **RL training makes the memory effective** (A vs. B): A is 21–29 points above B at 7K–56K.
 
 Strict scoring, the answer-format check and per-question outputs are in [`results/`](results/README.md).
 
@@ -74,7 +74,8 @@ bash /root/autodl-tmp/run_all.sh                  # groups A → C → B at all 
 
 | Version | Date | Changes |
 | --- | --- | --- |
-| **v0.2.5 (latest)** | **2026-11-12** | **Clearer setup, comparisons and notes** |
+| **v0.2.6 (latest)** | **2026-11-12** | **Findings worded as conclusions; why our numbers differ slightly from the paper** |
+| v0.2.5 | 2026-11-12 | Clearer setup, comparisons and notes |
 | v0.2.4 | 2026-11-12 | Changelog wording |
 | v0.2.3 | 2026-11-12 | Local tool settings no longer tracked |
 | v0.2.2 | 2026-11-12 | Whole repository in English |

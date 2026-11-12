@@ -1,95 +1,51 @@
-# 结果
+# Results
 
-每次运行一个目录 `results/<日期>_<组>_<说明>/`，不覆盖旧结果。目录里有：
+Each run has its own directory, `<date>_<group>_<description>/`, containing:
 
-- 结果文件 `ruler_hqa_<长度>/<方法>.jsonl`：作者评测脚本的原始输出，每行一题；
-- `summary.txt`：该目录的汇总表；
-- `manifest.json`：两个仓库的 commit、软件版本、GPU、命令、环境变量、起止时间、花费估算，以及每个结果文件的分数和 sha256；
-- `logs/`：评测日志。vLLM 服务日志较大，不进仓库，在 v0.2.0 的 Release 附件 `memagent_results_1112.tgz` 里。
+- `ruler_hqa_<length>/<method>.jsonl`: the authors' evaluation output, one line per question;
+- `summary.txt`: accuracy for each result file;
+- `manifest.json`: commits, software versions, GPU, commands, environment variables, and the scores and SHA-256 of each result file;
+- `logs/`: evaluation logs.
 
-核对方法（仓库根目录）：
+To check every result file against its manifest (128 questions, SHA-256, recomputed scores):
 
 ```bash
 python -I scripts/local/verify_results.py
 ```
 
-它检查每个结果文件是否正好 128 题、`_id` 恰好是 0–127、sha256 与 manifest 一致，并重新计算分数，与 manifest 和 `summary.txt` 对照。
+## Accuracy (%)
 
-## 运行列表
+- **sub_em** (main metric): the authors' metric. A prediction is correct if, after normalization, the prediction and the gold answer contain one another.
+- **strict** (paper, Appendix A.4): a prediction is correct only if it contains the gold answer.
 
-| 目录 | 内容 | 本仓库 commit | 时间（北京时间） |
-| --- | --- | --- | --- |
-| [`2026-11-12_A_trial-7k`](2026-11-12_A_trial-7k/) | RUNBOOK 第 4 步：A 组 7K 试跑 | `104b795` | 02:14–02:20 |
-| [`2026-11-12_A_boxed-7k`](2026-11-12_A_boxed-7k/) | RUNBOOK 4.5：A 组 7K 用 `\boxed{}` 作答格式的对照 | `6420c6e` | 02:20–02:26 |
-| [`2026-11-12_ABC_run-all`](2026-11-12_ABC_run-all/) | RUNBOOK 第 5–6 步：`run_all.sh`，A 14K–56K → C 7K–28K → B 7K–56K | `6420c6e` | 02:26–05:51 |
-
-作者代码都是 `ef4219b`。环境：vLLM 0.8.2（V0 引擎）、torch 2.6.0+cu124、transformers 4.50.1、Python 3.12.3，单张 RTX 4090 24G（AutoDL）。
-
-## 主结果（sub_em，%）
-
-主结果用作者代码自带的 sub_em：预测和标准答案互相包含都算对。每格 128 题。
-
-| 组 | 来源 | 7K | 14K | 28K | 56K |
+| Group | Source | 7K | 14K | 28K | 56K |
 | --- | --- | ---: | ---: | ---: | ---: |
-| A RL-MemAgent-7B | v1 表 2（主要对照） | 82.03 | 79.69 | 78.91 | 77.34 |
-| A RL-MemAgent-7B | ICLR 表 1 | 81.25 | 81.25 | 82.03 | 80.47 |
-| A RL-MemAgent-7B | PI-Mem 独立重跑 | 81.25 | 81.25 | 75.00 | 82.81 |
-| **A RL-MemAgent-7B** | **我们** | **78.91** | **79.69** | **75.78** | **78.91** |
-| C Qwen2.5-7B 直接读 | ICLR 表 1 | 52.34 | 57.03 | 51.56 | 44.53 |
-| **C Qwen2.5-7B 直接读** | **我们** | **53.12** | **54.69** | **48.44** | — |
-| B Qwen2.5-7B 记忆流程、无强化学习 | v1 图 5 | 59.38 | 52.34 | 51.56 | 47.66 |
-| **B Qwen2.5-7B 记忆流程、无强化学习** | **我们** | **57.81** | **53.91** | **53.12** | **50.00** |
+| A: RL-MemoryAgent-7B | Paper (v1, Table 2) | 82.03 | 79.69 | 78.91 | 77.34 |
+| | Ours, sub_em | **78.91** | **79.69** | **75.78** | **78.91** |
+| | Ours, strict | 72.66 | 71.09 | 68.75 | 70.31 |
+| B: Qwen2.5-7B, memory without RL | Paper (v1, Fig. 5)\* | 59.38 | 52.34 | 51.56 | 47.66 |
+| | Ours, sub_em | **57.81** | **53.91** | **53.12** | **50.00** |
+| | Ours, strict | 51.56 | 47.66 | 48.44 | 45.31 |
+| C: Qwen2.5-7B, full context | Paper (ICLR, Table 1) | 52.34 | 57.03 | 51.56 | 44.53 |
+| | Ours, sub_em | **53.12** | **54.69** | **48.44** | — |
+| | Ours, strict | 47.66 | 46.09 | 41.41 | — |
 
-C 组 56K 不在保险版范围内，没有跑。单格 128 题，准确率在 80% 附近时标准误约 3.5 个点，在 50% 附近约 4.4 个点。
+\* Fig. 5 shows this curve without numbers. The values are read from the figure's vector graphics.
 
-### 严格计分与抓不到答案的题数
+Each cell has 128 questions. C was run up to 28K. Questions where the code could not extract an answer count as wrong: A has 0 at every length, B has 0 / 2 / 0 / 0, and C has 1 / 3 / 1.
 
-严格计分按论文附录 A.4：只有预测包含标准答案才算对。"抓不到答案"指作者代码没能从回答里提取出答案（`pred` 为空），这些题按答错计。
+## Comparison with the paper
 
-| 组 | 严格计分 7K | 14K | 28K | 56K | 抓不到答案 7K | 14K | 28K | 56K |
-| --- | ---: | ---: | ---: | ---: | ---: | ---: | ---: | ---: |
-| A | 72.66 | 71.09 | 68.75 | 70.31 | 0 | 0 | 0 | 0 |
-| C | 47.66 | 46.09 | 41.41 | — | 1 | 3 | 1 | — |
-| B | 51.56 | 47.66 | 48.44 | 45.31 | 0 | 2 | 0 | 0 |
+- **A matches the paper and does not degrade with length.** The differences from the paper are −3.12 / 0.00 / −3.13 / +1.57, and A scores 78.91 at both 7K and 56K.
+- **A beats direct full-context reading (C).** A − C is 25.79 / 25.00 / 27.34 at 7K–28K (paper: 29.69 / 22.66 / 27.35).
+- **RL matters.** A − B is 21.10 / 25.78 / 22.66 / 28.91 (paper: 22.65 / 27.35 / 27.35 / 29.68). B declines with length, from 57.81 to 50.00 (paper: 59.38 to 47.66).
+- **The gaps hold under strict scoring**: A − C is 25.00 / 25.00 / 27.34, and A − B is 21.10 / 23.43 / 20.31 / 25.00.
 
-### `\boxed{}` 作答格式对照（A 组 7K）
+## Answer format (A, 7K)
 
-| 作答格式 | `--api` | sub_em | 严格计分 | 抓不到答案 |
-| --- | --- | ---: | ---: | ---: |
-| "the answer is"（代码默认、附录 A.4） | `recurrent` | 78.91 | 72.66 | 0 |
-| `\boxed{}`（论文表 5 的训练模板） | `recurrent-boxed` | 78.91 | 67.97 | 0 |
+The paper's training template asks for the answer in `\boxed{}` (Table 5). The evaluation code instead expects "the answer is" (Appendix A.4). We ran both formats at 7K:
 
-两种格式的 sub_em 相同；严格计分下 `\boxed{}` 低 4.7 个点。
-
-## 是否复现成功
-
-按 RUNBOOK"结果对照表"的三条标准逐条判断，**三条都满足**。
-
-1. **A 组落在参考范围内，且随长度不明显下降：满足。** 各长度与三行参考值的范围比较：
-
-   | 长度 | 参考范围 | 允许范围（±3） | 我们 | 判断 |
-   | --- | --- | --- | ---: | --- |
-   | 7K | 81.25–82.03 | 78.25–85.03 | 78.91 | 满足（低于参考范围 2.34，在 3 个点以内） |
-   | 14K | 79.69–81.25 | 76.69–84.25 | 79.69 | 满足（在参考范围内） |
-   | 28K | 75.00–82.03 | 72.00–85.03 | 75.78 | 满足（在参考范围内） |
-   | 56K | 77.34–82.81 | 74.34–85.81 | 78.91 | 满足（在参考范围内） |
-
-   7K 到 56K 都是 78.91，没有下降。最低的 28K（75.78）比其他长度低 3.1–3.9 个点，小于两格之差的标准误（约 5 个点）。
-
-2. **A 组在 7K–28K 明显高于 C 组：满足。** 差距分别为 25.79、25.00、27.34 个点，论文里是 23–30 个点。用严格计分时差距是 25.00、25.00、27.34 个点，结论不变。
-
-3. **A 组高于 B 组，B 组随长度下降：满足。** A 比 B 高 21.10、25.78、22.66、28.91 个点。B 从 7K 到 56K 由 57.81 降到 50.00，和 v1 图 5 的 59.38 → 47.66 方向一致；每个长度与图 5 的差都在 2.4 个点以内。
-
-保险版验证不了的：论文里直接读全文的模型主要在 56K 以后明显变差，这次 C 组只跑到 28K，所以只验证了 A 高于 C。
-
-## 耗时与花费
-
-各长度的评测耗时（`time` 的 real）：
-
-| 组 | 7K | 14K | 28K | 56K |
-| --- | ---: | ---: | ---: | ---: |
-| A（每题调用 3.0 / 4.1 / 7.1 / 12.8 次） | 5m40s | 12m44s | 28m36s | 74m40s |
-| B（调用次数同 A） | 4m04s | 9m02s | 18m14s | 38m53s |
-| C（每题调用 1 次） | 2m00s | 4m19s | 9m55s | — |
-
-- 每题调用次数随长度线性增长（见 [`docs/data_stats.md`](../docs/data_stats.md)）。墙钟时间增长得比调用次数快：A 从 28K 到 56K，调用次数是 1.8 倍，时间是 2.6 倍。这台 24G 卡用 V0 引擎时，KV cache 只够同时处理 7–8 个记忆流程请求，时间受并发上限影响。所以"计算量线性增长"用调用次数说明，不用这里的墙钟时间。
+| Answer format | sub_em | strict |
+| --- | ---: | ---: |
+| "the answer is" (`--api recurrent`, used for all results above) | 78.91 | 72.66 |
+| `\boxed{}` (`--api recurrent-boxed`) | 78.91 | 67.97 |

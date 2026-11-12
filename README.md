@@ -74,7 +74,8 @@ bash /root/autodl-tmp/run_all.sh                  # groups A → C → B at all 
 
 | Version | Date | Changes |
 | --- | --- | --- |
-| **v0.2.6 (latest)** | **2026-11-12** | **Findings worded as conclusions; why our numbers differ slightly from the paper** |
+| **v1.0.0 (latest)** | **2026-11-13** | **Version submitted with the HW3 report** |
+| v0.2.6 | 2026-11-12 | Findings worded as conclusions; why our numbers differ slightly from the paper |
 | v0.2.5 | 2026-11-12 | Clearer setup, comparisons and notes |
 | v0.2.4 | 2026-11-12 | Changelog wording |
 | v0.2.3 | 2026-11-12 | Local tool settings no longer tracked |

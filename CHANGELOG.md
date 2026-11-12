@@ -2,6 +2,10 @@
 
 One entry per merge into `main`, each with an annotated tag.
 
+## v1.0.0 — 2026-11-13
+
+- The version submitted with the HW3 report (final project proposal). Results, scripts and documentation are unchanged since v0.2.6.
+
 ## v0.2.6 — 2026-11-12
 
 - `README.md` and `results/README.md`: each finding is stated as a conclusion, followed by the groups it compares.

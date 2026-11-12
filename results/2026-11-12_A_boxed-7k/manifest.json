@@ -1,7 +1,7 @@
 {
   "run_id": "2026-11-12_A_boxed-7k",
   "group": "A",
-  "description": "RUNBOOK 4.5：A 组 7K 用 \\boxed{} 作答格式（--api recurrent-boxed）的对照",
+  "description": "Answer-format check: group A at 7K with the \boxed{} format (--api recurrent-boxed)",
   "our_repo": {
     "url": "https://github.com/Issac-Shi/memagent-reproduction",
     "branch": "repro/baseline",
@@ -9,7 +9,7 @@
   },
   "commands": {
     "cwd": "MemAgent/taskutils/memory_eval",
-    "server": "VLLM_USE_V1=0 vllm serve /root/autodl-tmp/models/RL-MemoryAgent-7B --served-model-name BytedTsinghua-SIA/RL-MemoryAgent-7B --port 8000（沿用试跑的服务）",
+    "server": "VLLM_USE_V1=0 vllm serve /root/autodl-tmp/models/RL-MemoryAgent-7B --served-model-name BytedTsinghua-SIA/RL-MemoryAgent-7B --port 8000 (same server as the 7K run)",
     "eval": [
       "python ruler_hqa.py --model BytedTsinghua-SIA/RL-MemoryAgent-7B --tokenizer /root/autodl-tmp/models/RL-MemoryAgent-7B --api recurrent-boxed --length 50 --save_dir results/ruler_hqa_50 --save_file MemoryAgent-7B-boxed --n_proc 256"
     ]
@@ -31,7 +31,7 @@
     "gpu_hours": 0.096,
     "price_cny_per_hour": 2.0,
     "estimate_cny": 0.19,
-    "note": "同上"
+    "note": "Evaluation time only, at an assumed price of ¥2 per GPU-hour."
   },
   "results": {
     "ruler_hqa_50/MemoryAgent-7B-boxed.jsonl": {
@@ -55,7 +55,7 @@
     "gpu": "NVIDIA GeForce RTX 4090, 24564 MiB, 595.71.05, 8.9",
     "cuda_driver": "CUDA Version: 13.2",
     "vllm_engine": "V0 (VLLM_USE_V1=0)",
-    "host": "AutoDL 单卡实例（GPU 模式）"
+    "host": "AutoDL single-GPU instance"
   },
   "author_repo": {
     "url": "https://github.com/BytedTsinghua-SIA/MemAgent",

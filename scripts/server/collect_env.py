@@ -1,4 +1,4 @@
-# 采集写 manifest 要用的环境信息，存到 /root/autodl-tmp/logs/env_info.json。
+# Collect environment information for the run manifests into /root/autodl-tmp/logs/env_info.json.
 #   python /root/autodl-tmp/scripts/collect_env.py
 import json, platform, subprocess, datetime
 

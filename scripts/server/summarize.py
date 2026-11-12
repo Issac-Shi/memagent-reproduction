@@ -1,9 +1,9 @@
-# RUNBOOK 第 6 步的汇总片段（原样）：每个结果文件的 sub_em、严格计分、抓不到答案的题数。
-# 必须在 MemAgent/taskutils/memory_eval 下运行（要导入作者的 utils）。
-# 可选参数：只汇总文件名含该子串的结果，例如 python summarize.py MemoryAgent-7B-5k-1k-infty
+# Accuracy table for every result file: sub_em, strict, and the number of questions with no extracted answer.
+# Run from MemAgent/taskutils/memory_eval (it imports the authors' utils).
+# Optional argument: only include files whose path contains this substring, e.g. python summarize.py MemoryAgent-7B-5k-1k-infty
 import json, glob, os, sys
-sys.path.insert(0, os.getcwd())         # 手册用 python - 运行，当前目录本来就在 sys.path 里；存成文件后要手动加
-from utils import normalize_answer      # 和评测代码同一个归一化函数
+sys.path.insert(0, os.getcwd())         # make the authors' utils importable when run as a file
+from utils import normalize_answer      # same normalization as the evaluation code
 pat = sys.argv[1] if len(sys.argv) > 1 else ''
 rows = []
 for f in glob.glob('results/ruler_hqa_*/*.jsonl'):

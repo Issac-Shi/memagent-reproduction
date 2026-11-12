@@ -1,4 +1,4 @@
-# ---- 模型权重与数据（体积大，可从公开来源重新下载）----
+# ---- Model weights and test data (large; downloadable from public sources) ----
 models/
 *.safetensors
 *.bin
@@ -8,23 +8,23 @@ models/
 hotpotqa/
 eval_*.json
 
-# ---- 打包文件（大的结果包挂到 GitHub Release）----
+# ---- Archives (large result bundles go to GitHub Releases) ----
 *.tgz
 *.tar
 *.tar.gz
 *.zip
 
-# ---- vLLM 服务日志（大）----
+# ---- vLLM server logs (large) ----
 serve_*.log
 
-# ---- 本地下载与临时目录 ----
+# ---- Local downloads and temporary files ----
 downloads/
 tmp/
 .cache/
 __pycache__/
 *.pyc
 
-# ---- 凭据与 SSH 信息（一律不进仓库）----
+# ---- Credentials and SSH information ----
 .env
 .env.*
 *.pem
@@ -36,5 +36,9 @@ known_hosts
 .ssh/
 secrets/
 
-# ---- Claude Code 个人设置 ----
+# ---- Internal documents (kept locally only) ----
+CLAUDE.md
+RUNBOOK.md
+
+# ---- Personal Claude Code settings ----
 .claude/settings.local.json

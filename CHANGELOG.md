@@ -2,6 +2,16 @@
 
 One entry per merge into `main`, each with an annotated tag.
 
+## v0.2.2 — 2026-11-12
+
+- The whole repository is now in English:
+  - script comments and printed messages;
+  - the descriptive fields of each `manifest.json` (results unchanged);
+  - `docs/`, `.gitignore`, `.gitattributes`.
+- Script code is unchanged, except that `make_export.py` reads both the old Chinese and the new English log messages.
+- `docs/repro_notes.md` lists only the differences from the authors' setup. `docs/AI_USAGE.md` is in English.
+- The internal run book and project notes are no longer tracked.
+
 ## v0.2.1 — 2026-11-12
 
 - `README.md` and `results/README.md` rewritten in English. Each group's comparison now shows only the paper row it is compared against.

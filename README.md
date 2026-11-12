@@ -6,16 +6,17 @@ We reproduce the main long-context QA result of **MemAgent** ([arXiv v1](https:/
 
 ## Setup
 
-| Group | Model | Reading |
-| --- | --- | --- |
-| A | RL-MemoryAgent-7B | MemAgent: chunked reading with memory |
-| B | Qwen2.5-7B-Instruct | Same memory workflow, without RL |
-| C | Qwen2.5-7B-Instruct + YaRN (128K) | Whole document in one prompt |
+| Group | Model | How the model reads the document | Role |
+| --- | --- | --- | --- |
+| A | RL-MemoryAgent-7B | Chunk by chunk, 5K tokens at a time. After each chunk it rewrites a 1K-token memory; at the end it answers from the memory alone. | The method (MemAgent) |
+| B | Qwen2.5-7B-Instruct, the model A was trained from | The same chunk-by-chunk memory procedure as A | Ablation: memory without RL training |
+| C | Qwen2.5-7B-Instruct, context extended to 128K with YaRN | The whole document and the question in a single prompt; no memory | Baseline: standard long-context reading |
 
-- **Benchmark**: RULER-HotpotQA at 7K, 14K, 28K and 56K tokens (C: up to 28K). Every length uses the same 128 questions; only the amount of distractor text changes.
+- **Benchmark**: RULER-HotpotQA. Each multi-hop question comes with a document in which the passages needed to answer it are mixed with distractor passages. The document is 7K, 14K, 28K or 56K tokens long (50, 100, 200 or 400 passages). Every length uses the same 128 questions.
+- **Scope**: our compute is a single rented RTX 4090 (24 GB), so we run a reduced scope: A and B at 7K–56K, C at 7K–28K. The paper's longer settings (112K and above) are not run.
 - **Code**: the authors' evaluation code, unmodified ([`third_party/MemAgent`](third_party/MemAgent), commit `ef4219b`).
-- **Inference**: vLLM 0.8.2 on one RTX 4090 (24 GB) with default parameters; group C adds `--max-model-len 42000`. We use the V0 engine (`VLLM_USE_V1=0`) because the default V1 engine does not fit in 24 GB ([details](docs/repro_notes.md)).
-- **Metric**: sub_em, the accuracy metric in the authors' code.
+- **Inference**: vLLM 0.8.2 with default parameters; group C adds `--max-model-len 42000`. We use the V0 engine (`VLLM_USE_V1=0`) because the default V1 engine does not fit in 24 GB ([details](docs/repro_notes.md)).
+- **Metric**: sub_em, the accuracy metric in the authors' code. An answer counts as correct if, after normalization, it and the gold answer contain one another.
 
 ## Results
 
@@ -32,9 +33,10 @@ Accuracy (%) on 128 questions per cell.
 
 \* Fig. 5 shows this curve without numbers. The values are read from the figure's vector graphics.
 
-- **Every cell differs from the paper by at most 3.13 points.**
-- **MemAgent does not degrade with length**: A scores 78.91 at both 7K and 56K, while B drops from 57.81 to 50.00.
-- **RL-trained memory beats both baselines**: A is 25–27 points above C and 21–29 points above B.
+- **Ours vs. paper (A, B, C)**: every cell is within 3.13 points of the paper.
+- **A across lengths**: MemAgent does not degrade as documents get longer: 78.91 at 7K and 78.91 at 56K. B, which uses the same memory without RL, drops from 57.81 to 50.00.
+- **A vs. C**: reading with RL-trained memory beats reading the whole document at once by 25–27 points (7K–28K).
+- **A vs. B**: RL training of the memory adds 21–29 points (7K–56K).
 
 Strict scoring, the answer-format check and per-question outputs are in [`results/`](results/README.md).
 
@@ -72,6 +74,7 @@ bash /root/autodl-tmp/run_all.sh                  # groups A → C → B at all 
 
 | Version | Date | Changes |
 | --- | --- | --- |
+| **v0.2.5 (latest)** | **2026-11-12** | **Clearer setup, comparisons and notes** |
 | v0.2.4 | 2026-11-12 | Changelog wording |
 | v0.2.3 | 2026-11-12 | Local tool settings no longer tracked |
 | v0.2.2 | 2026-11-12 | Whole repository in English |

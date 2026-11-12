@@ -36,10 +36,31 @@ Each cell has 128 questions. C was run up to 28K. Questions where the code could
 
 ## Comparison with the paper
 
-- **A matches the paper and does not degrade with length.** The differences from the paper are −3.12 / 0.00 / −3.13 / +1.57, and A scores 78.91 at both 7K and 56K.
-- **A beats direct full-context reading (C).** A − C is 25.79 / 25.00 / 27.34 at 7K–28K (paper: 29.69 / 22.66 / 27.35).
-- **RL matters.** A − B is 21.10 / 25.78 / 22.66 / 28.91 (paper: 22.65 / 27.35 / 27.35 / 29.68). B declines with length, from 57.81 to 50.00 (paper: 59.38 to 47.66).
-- **The gaps hold under strict scoring**: A − C is 25.00 / 25.00 / 27.34, and A − B is 21.10 / 23.43 / 20.31 / 25.00.
+All differences are in percentage points.
+
+**Ours minus paper** (sub_em; positive means ours is higher):
+
+| Group | 7K | 14K | 28K | 56K |
+| --- | ---: | ---: | ---: | ---: |
+| A: RL-MemoryAgent-7B | −3.12 | 0.00 | −3.13 | +1.57 |
+| B: Qwen2.5-7B, memory without RL | −1.57 | +1.57 | +1.56 | +2.34 |
+| C: Qwen2.5-7B, full context | +0.78 | −2.34 | −3.12 | — |
+
+**Gaps between groups**:
+
+| Gap | Source | 7K | 14K | 28K | 56K |
+| --- | --- | ---: | ---: | ---: | ---: |
+| A − C (memory vs. full context) | Paper | 29.69 | 22.66 | 27.35 | 32.81 |
+| | Ours, sub_em | 25.79 | 25.00 | 27.34 | — |
+| | Ours, strict | 25.00 | 25.00 | 27.34 | — |
+| A − B (RL vs. no RL) | Paper | 22.65 | 27.35 | 27.35 | 29.68 |
+| | Ours, sub_em | 21.10 | 25.78 | 22.66 | 28.91 |
+| | Ours, strict | 21.10 | 23.43 | 20.31 | 25.00 |
+
+- **Ours vs. paper**: every cell of A, B and C is within 3.13 points of the paper. A does not drop with length (78.91 at 7K and at 56K).
+- **A vs. C**: A is 25–27 points above C at 7K–28K; the paper's gap is 23–30.
+- **A vs. B**: A is 21–29 points above B; the paper's gap is 23–30. B declines with length, from 57.81 to 50.00 (paper: 59.38 to 47.66).
+- **Strict scoring**: both gaps stay between 20 and 27 points.
 
 ## Answer format (A, 7K)
 

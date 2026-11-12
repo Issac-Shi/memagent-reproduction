@@ -2,6 +2,10 @@
 
 One entry per merge into `main`, each with an annotated tag.
 
+## v0.2.3 — 2026-11-12
+
+- Local Claude Code settings (`.claude/`) are no longer tracked.
+
 ## v0.2.2 — 2026-11-12
 
 - The whole repository is now in English:

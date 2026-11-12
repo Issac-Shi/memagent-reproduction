@@ -2,9 +2,13 @@
 
 One entry per merge into `main`, each with an annotated tag.
 
+## v0.2.4 — 2026-11-12
+
+- Wording fixes in `CHANGELOG.md` and `.gitignore`.
+
 ## v0.2.3 — 2026-11-12
 
-- Local Claude Code settings (`.claude/`) are no longer tracked.
+- Local tool settings are no longer tracked.
 
 ## v0.2.2 — 2026-11-12
 

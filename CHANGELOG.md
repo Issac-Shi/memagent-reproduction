@@ -2,6 +2,14 @@
 
 One entry per merge into `main`, each with an annotated tag.
 
+## v0.2.5 — 2026-11-12
+
+- `README.md`: the setup table explains how each group reads the document and its role; the scope and its reason are stated; each finding names the groups it compares; the latest version is highlighted.
+- `results/README.md`: the comparison with the paper is shown as tables.
+- `docs/repro_notes.md`: sampling settings shown as a table.
+- `docs/AI_USAGE.md`: shortened to a general summary.
+- Results are unchanged.
+
 ## v0.2.4 — 2026-11-12
 
 - Wording fixes in `CHANGELOG.md` and `.gitignore`.

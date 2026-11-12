@@ -40,5 +40,5 @@ secrets/
 CLAUDE.md
 RUNBOOK.md
 
-# ---- Personal Claude Code settings ----
-.claude/settings.local.json
+# ---- Local Claude Code settings ----
+.claude/

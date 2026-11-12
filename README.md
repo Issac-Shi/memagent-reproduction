@@ -72,6 +72,7 @@ bash /root/autodl-tmp/run_all.sh                  # groups A → C → B at all 
 
 | Version | Date | Changes |
 | --- | --- | --- |
+| v0.2.3 | 2026-11-12 | Local tool settings no longer tracked |
 | v0.2.2 | 2026-11-12 | Whole repository in English |
 | v0.2.1 | 2026-11-12 | README and results summary in English |
 | v0.2.0 | 2026-11-12 | Baseline reproduction results |
